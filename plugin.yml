@@ -1,0 +1,10 @@
+name: Research
+version: 0.0.57
+author: stageroad0820
+main: net.mcredstone.stageroad0820.Research.Main
+
+commands:
+  research:
+    description: This command is a main command.(MainCommand.java) This command using for Players, Console, Command Blocks.
+  res:
+    description: This command is simplified a main command.(MainCommand.java) This command using for Players, Console, Command Blocks.

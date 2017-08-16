@@ -1,0 +1,26 @@
+# Minecraft "Research" plugin Setting file
+
+auto-register:
+  enable: true
+  events:
+    enable: true
+    Event_PlayerJoin:
+      enabled: null
+      uses: false
+    Event_GUI_Test:
+      enabled: null
+      uses: false
+    Event_EntityDamagedByEntity:
+      enabled: null
+      uses: false
+    SE_Event_Main:
+      enabled: null
+      uses: false
+    SE_Event_Passive:
+      enabled: null
+      uses: false
+  recipes:
+    enable: true
+    TestRecipe:
+      enabled: null
+      uses: true
