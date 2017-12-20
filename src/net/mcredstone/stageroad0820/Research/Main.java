@@ -20,23 +20,23 @@ import net.mcredstone.stageroad0820.Research.Events.GUIs.SelectEntities.SE_Event
 import net.mcredstone.stageroad0820.Research.Recipes.TestRecipe;
 
 public class Main extends JavaPlugin {
-	// ÇÃ·¯±×ÀÎ¿¡ ÇÊ¿äÇÑ °´Ã¼ ¼±¾ğ ¹× ÃÊ±âÈ­
+	// í”ŒëŸ¬ê·¸ì¸ì— í•„ìš”í•œ ê°ì²´ ì„ ì–¸ ë° ì´ˆê¸°í™”
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static Main plugin;
 
-	// IO ½ºÆ®¸²
+	// IO ìŠ¤íŠ¸ë¦¼
 	public FileConfiguration config = YamlConfiguration.loadConfiguration(new File("config.yml"));
 
-	// ÇÊ¿äÇÑ º¯¼ö ¼±¾ğ ¹× ÃÊ±âÈ­
+	// í•„ìš”í•œ ë³€ìˆ˜ ì„ ì–¸ ë° ì´ˆê¸°í™”
 	public int build_no = 1;
 	int error_count = 0;
 	boolean hasConfig = true;
 
-	// plugin.yml ÆÄÀÏ ¹Ş¾Æ¿À´Â °´Ã¼¿Í ÇÃ·¯±×ÀÎ °ü¸®ÀÚ °´Ã¼
+	// plugin.yml íŒŒì¼ ë°›ì•„ì˜¤ëŠ” ê°ì²´ì™€ í”ŒëŸ¬ê·¸ì¸ ê´€ë¦¬ì ê°ì²´
 	PluginDescriptionFile pdfFile = this.getDescription();
 	PluginManager pm = Bukkit.getServer().getPluginManager();
 
-	// ChatColor °£·«È­
+	// ChatColor ê°„ëµí™”
 	String aqua = ChatColor.AQUA + "";
 	String black = ChatColor.BLACK + "";
 	String blue = ChatColor.BLUE + "";
@@ -61,7 +61,7 @@ public class Main extends JavaPlugin {
 	String strth = ChatColor.STRIKETHROUGH + "";
 	String under = ChatColor.UNDERLINE + "";
 
-	// ÀÚÁÖ »ç¿ëÇÏ´Â String °ª °£·«È­
+	// ìì£¼ ì‚¬ìš©í•˜ëŠ” String ê°’ ê°„ëµí™”
 	String prefix = aqua + "[Research] " + white + "";
 	String error = dred + "[Res Error] " + red + "";
 	String warning = yellow + "[Res Warning] " + white + "";
@@ -79,247 +79,247 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		console(white + "=================================================================================");
-		console(prefix + "ÇÃ·¯±×ÀÎÀ» »ç¿ëÇÏ±â À§ÇØ ÃÊ±âÈ­ ÇÏ°í ÀÖ½À´Ï´Ù. Àá½Ã¸¸ ±â´Ù·Á ÁÖ¼¼¿ä...");
+		console(prefix + "í”ŒëŸ¬ê·¸ì¸ì„ ì‚¬ìš©í•˜ê¸° ìœ„í•´ ì´ˆê¸°í™” í•˜ê³  ìˆìŠµë‹ˆë‹¤. ì ì‹œë§Œ ê¸°ë‹¤ë ¤ ì£¼ì„¸ìš”...");
 		console(white + "=================================================================================");
 
-		// config.yml ºÒ·¯¿À±â
+		// config.yml ë¶ˆëŸ¬ì˜¤ê¸°
 		try {
 			saveDefaultConfig();
-			console(prefix + "config.yml ÆÄÀÏÀÇ ±âº» ³»¿ëÀ» ºÒ·¯¿Ô½À´Ï´Ù.");
+			console(prefix + "config.yml íŒŒì¼ì˜ ê¸°ë³¸ ë‚´ìš©ì„ ë¶ˆëŸ¬ì™”ìŠµë‹ˆë‹¤.");
 			
 			getConfig().options().copyDefaults(true);
-			console(prefix + yellow + getDataFolder().toString() + white + " À§Ä¡¿¡ config.yml ÆÄÀÏÀ» »ı¼ºÇÏ¿´½À´Ï´Ù.");
+			console(prefix + yellow + getDataFolder().toString() + white + " ìœ„ì¹˜ì— config.yml íŒŒì¼ì„ ìƒì„±í•˜ì˜€ìŠµë‹ˆë‹¤.");
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			console(error + "config.yml ÆÄÀÏ¿¡ ¹®Á¦°¡ ÀÖ¾î ºÒ·¯¿ÀÁö ¸øÇß½À´Ï´Ù.");
+			console(error + "config.yml íŒŒì¼ì— ë¬¸ì œê°€ ìˆì–´ ë¶ˆëŸ¬ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 			hasConfig = false;
 		}
 
 		/*
-		 * ÀÌº¥Æ® µî·Ï: 4
+		 * ì´ë²¤íŠ¸ ë“±ë¡: 4
 		 * 
-		 * Ä¿¸Çµå µî·Ï: 1
+		 * ì»¤ë§¨ë“œ ë“±ë¡: 1
 		 * 
-		 * ÆŞ¹Ì¼Ç µî·Ï: 0
+		 * í„ë¯¸ì…˜ ë“±ë¡: 0
 		 * 
-		 * Á¶ÇÕ¹ı µî·Ï: 1
+		 * ì¡°í•©ë²• ë“±ë¡: 1
 		 * 
-		 * ´Ù¸¥ Å¬·¡½º ¿¬°á: 0
+		 * ë‹¤ë¥¸ í´ë˜ìŠ¤ ì—°ê²°: 0
 		 */
 
-		// ¸ŞÀÎ Ä¿¸Çµå µî·Ï
+		// ë©”ì¸ ì»¤ë§¨ë“œ ë“±ë¡
 		try {
 			getCommand("res").setExecutor(new MainCommand(this));
 			getCommand("research").setExecutor(new MainCommand(this));
-			console(prefix + "¸í·É¾î '/res ¹×  /research (MainCommand.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù. ");
+			console(prefix + "ëª…ë ¹ì–´ '/res ë°  /research (MainCommand.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤. ");
 		} catch (Exception e) {
 			e.printStackTrace();
-			console(error + "À§¿Í °°Àº ¹®Á¦·Î ¸í·É¾î '/res ¹× /research (MainCommand.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+			console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ëª…ë ¹ì–´ '/res ë° /research (MainCommand.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 			error_count++;
 		}
 
-		// config.yml Á¤»ó ÀĞ±â
+		// config.yml ì •ìƒ ì½ê¸°
 		if (hasConfig == true) {
-			console(prefix + "config.yml ÆÄÀÏÀÌ Á¤»óÀûÀ¸·Î ·Îµå µÇ¾úÀ¸¹Ç·Î ¼³Á¤¿¡ ÀÔ·ÂµÈ ³»¿ë´ë·Î ÃÊ±âÈ­¸¦ ÁøÇàÇÕ´Ï´Ù.");
-			// config.yml ÀÇ "auto-register.enable" Ç×¸ñÀÌ true ÀÏ °æ¿ì
+			console(prefix + "config.yml íŒŒì¼ì´ ì •ìƒì ìœ¼ë¡œ ë¡œë“œ ë˜ì—ˆìœ¼ë¯€ë¡œ ì„¤ì •ì— ì…ë ¥ëœ ë‚´ìš©ëŒ€ë¡œ ì´ˆê¸°í™”ë¥¼ ì§„í–‰í•©ë‹ˆë‹¤.");
+			// config.yml ì˜ "auto-register.enable" í•­ëª©ì´ true ì¼ ê²½ìš°
 			if(getConfig().getBoolean("auto-register.enable") == true) {
-				// ÀÌº¥Æ® µî·Ï: config.yml ÆÄÀÏÀÇ "auto-register.event.enable" Ç×¸ñÀÌ true ÀÏ °æ¿ì
+				// ì´ë²¤íŠ¸ ë“±ë¡: config.yml íŒŒì¼ì˜ "auto-register.event.enable" í•­ëª©ì´ true ì¼ ê²½ìš°
 				if (getConfig().getBoolean("auto-register.events.enable") == true) {
-					// PlayerJoinEvent È°¼ºÈ­ »óÅÂ°¡ true ÀÏ °æ¿ì
+					// PlayerJoinEvent í™œì„±í™” ìƒíƒœê°€ true ì¼ ê²½ìš°
 					if (getConfig().getBoolean("auto-register.events.Event_PlayerJoin.uses") == true) {
-						// ÀÌº¥Æ® ¿¬°á: PlayerJoinEvent (Event_PlayerJoin.java)
+						// ì´ë²¤íŠ¸ ì—°ê²°: PlayerJoinEvent (Event_PlayerJoin.java)
 						try {
 							pm.registerEvents(new Event_PlayerJoin(this), this);
 							getConfig().set("auto-register.events.Event_PlayerJoin.enabled", true);
-							console(prefix + "ÀÌº¥Æ® 'PlayerJoinEvent (Event_PlayerJoin.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù.");
+							console(prefix + "ì´ë²¤íŠ¸ 'PlayerJoinEvent (Event_PlayerJoin.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 						} catch (Exception e) {
 							e.printStackTrace();
 							getConfig().set("auto-register.events.Event_PlayerJoin.enabled", false);
-							console(error + "À§¿Í °°Àº ¹®Á¦·Î ÀÌº¥Æ® 'PlayerJoinEvent (Event_PlayerJoin.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+							console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ì´ë²¤íŠ¸ 'PlayerJoinEvent (Event_PlayerJoin.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 							error_count++;
 						}
 					} else {
 						getConfig().set("auto-register.events.Event_PlayerJoin.enabled", false);
-						console(prefix + "ÇÃ·¯±×ÀÎ ¼³Á¤¿¡ µû¶ó ÀÌº¥Æ® PlayerJoinEvent (Event_PlayerJoin.java) (Àº)´Â µî·ÏÇÏÁö ¾Ê½À´Ï´Ù.");
+						console(prefix + "í”ŒëŸ¬ê·¸ì¸ ì„¤ì •ì— ë”°ë¼ ì´ë²¤íŠ¸ PlayerJoinEvent (Event_PlayerJoin.java) (ì€)ëŠ” ë“±ë¡í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 					}
 
-					// InventoryClickEvent (SE_Event_Main.java) È°¼ºÈ­ »óÅÂ°¡ true ÀÏ °æ¿ì
+					// InventoryClickEvent (SE_Event_Main.java) í™œì„±í™” ìƒíƒœê°€ true ì¼ ê²½ìš°
 					if (getConfig().getBoolean("auto-register.events.SE_Event_Main.uses") == true) {
-						// ÀÌº¥Æ® ¿¬°á: InventoryClickEvent (SE_Event_Main.java)
+						// ì´ë²¤íŠ¸ ì—°ê²°: InventoryClickEvent (SE_Event_Main.java)
 						try {
 							pm.registerEvents(new SE_Event_Main(this), this);
 							getConfig().set("auto-register.events.SE_Event_Main.enabled", true);
-							console(prefix + "ÀÌº¥Æ® 'InventoryClickEvent (SE_Event_Main.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù.");
+							console(prefix + "ì´ë²¤íŠ¸ 'InventoryClickEvent (SE_Event_Main.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 						} catch (Exception e) {
 							e.printStackTrace();
 							getConfig().set("auto-register.events.SE_Event_Main.enabled", false);
-							console(error + "À§¿Í °°Àº ¹®Á¦·Î ÀÌº¥Æ® 'InventoryClickEvent (SE_Event_Main.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+							console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ì´ë²¤íŠ¸ 'InventoryClickEvent (SE_Event_Main.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 							error_count++;
 						}
 					} else {
 						getConfig().set("auto-register.events.SE_Event_Main.enabled", false);
-						console(prefix + "ÇÃ·¯±×ÀÎ ¼³Á¤¿¡ µû¶ó ÀÌº¥Æ® InventoryClickEvent (SE_Event_Main.java) (Àº)´Â µî·ÏÇÏÁö ¾Ê½À´Ï´Ù.");
+						console(prefix + "í”ŒëŸ¬ê·¸ì¸ ì„¤ì •ì— ë”°ë¼ ì´ë²¤íŠ¸ InventoryClickEvent (SE_Event_Main.java) (ì€)ëŠ” ë“±ë¡í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 					}
 
-					// InventoryClickEvent (Event_GUI_Test.java) È°¼ºÈ­ »óÅÂ°¡ true ÀÏ °æ¿ì
+					// InventoryClickEvent (Event_GUI_Test.java) í™œì„±í™” ìƒíƒœê°€ true ì¼ ê²½ìš°
 					if (getConfig().getBoolean("auto-register.events.Event_GUI_Test.uses") == true) {
-						// ÀÌº¥Æ® ¿¬°á: InventoryClickEvent (Event_GUI_Test.java)
+						// ì´ë²¤íŠ¸ ì—°ê²°: InventoryClickEvent (Event_GUI_Test.java)
 						try {
 							pm.registerEvents(new Event_GUI_Test(this), this);
 							getConfig().set("auto-register.events.Event_GUI_Test.enabled", true);
-							console(prefix + "ÀÌº¥Æ® 'InventoryClickEvent (Event_GUI_Test.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù.");
+							console(prefix + "ì´ë²¤íŠ¸ 'InventoryClickEvent (Event_GUI_Test.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 						} catch (Exception e) {
 							e.printStackTrace();
 							getConfig().set("auto-register.events.Event_GUI_Test.enabled", false);
-							console(error + "À§¿Í °°Àº ¹®Á¦·Î ÀÌº¥Æ® 'InventoryClickEvent (Event_GUI_Test.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+							console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ì´ë²¤íŠ¸ 'InventoryClickEvent (Event_GUI_Test.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 							error_count++;
 						}
 					} else {
 						getConfig().set("auto-register.events.Event_GUI_Test.enabled", false);
-						console(prefix + "ÇÃ·¯±×ÀÎ ¼³Á¤¿¡ µû¶ó ÀÌº¥Æ® InventoryClickEvent (Event_GUI_Test.java) (Àº)´Â µî·ÏÇÏÁö ¾Ê½À´Ï´Ù.");
+						console(prefix + "í”ŒëŸ¬ê·¸ì¸ ì„¤ì •ì— ë”°ë¼ ì´ë²¤íŠ¸ InventoryClickEvent (Event_GUI_Test.java) (ì€)ëŠ” ë“±ë¡í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 					}
 
-					// InventoryClickEvent (SE_Event_Passive.java) È°¼ºÈ­ »óÅÂ°¡ true ÀÏ °æ¿ì
+					// InventoryClickEvent (SE_Event_Passive.java) í™œì„±í™” ìƒíƒœê°€ true ì¼ ê²½ìš°
 					if (getConfig().getBoolean("auto-register.events.SE_Event_Passive.uses") == true) {
-						// ÀÌº¥Æ® ¿¬°á: InventoryClickEvent (SE_Event_Passive.java)
+						// ì´ë²¤íŠ¸ ì—°ê²°: InventoryClickEvent (SE_Event_Passive.java)
 						try {
 							pm.registerEvents(new SE_Event_Passive(this), this);
 							getConfig().set("auto-register.events.SE_Event_Passive.enabled", true);
-							console(prefix + "ÀÌº¥Æ® 'InventoryClickEvent (SE_Event_Passive.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù.");
+							console(prefix + "ì´ë²¤íŠ¸ 'InventoryClickEvent (SE_Event_Passive.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 						} catch (Exception e) {
 							e.printStackTrace();
 							getConfig().set("auto-register.events.SE_Event_Passive.enabled", false);
-							console(error + "À§¿Í °°Àº ¹®Á¦·Î ÀÌº¥Æ® 'InventoryClickEvent (SE_Event_Passive.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+							console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ì´ë²¤íŠ¸ 'InventoryClickEvent (SE_Event_Passive.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 							error_count++;
 						}
 					} else {
 						getConfig().set("auto-register.events.SE_Event_Passive.enabled", false);
-						console(prefix + "ÇÃ·¯±×ÀÎ ¼³Á¤¿¡ µû¶ó ÀÌº¥Æ® InventoryClickEvent (SE_Event_Passive.java) (Àº)´Â µî·ÏÇÏÁö ¾Ê½À´Ï´Ù.");
+						console(prefix + "í”ŒëŸ¬ê·¸ì¸ ì„¤ì •ì— ë”°ë¼ ì´ë²¤íŠ¸ InventoryClickEvent (SE_Event_Passive.java) (ì€)ëŠ” ë“±ë¡í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 					}
 					
-					// EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java) È°¼ºÈ­ »óÅÂ°¡ true ÀÏ °æ¿ì
+					// EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java) í™œì„±í™” ìƒíƒœê°€ true ì¼ ê²½ìš°
 					if (getConfig().getBoolean("auto-register.events.Event_EntityDamagedByEntity.uses") == true) {
-						// ÀÌº¥Æ® ¿¬°á: EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java)
+						// ì´ë²¤íŠ¸ ì—°ê²°: EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java)
 						try {
 							pm.registerEvents(new Event_EntityDamagedByEntity(this), this);
 							getConfig().set("auto-register.events.Event_EntityDamagedByEntity.enabled", true);
-							console(prefix + "ÀÌº¥Æ® 'EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù.");
+							console(prefix + "ì´ë²¤íŠ¸ 'EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 						} catch (Exception e) {
 							e.printStackTrace();
 							getConfig().set("auto-register.events.Event_EntityDamagedByEnity.enabled", false);
-							console(error + "À§¿Í °°Àº ¹®Á¦·Î ÀÌº¥Æ® 'EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+							console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ì´ë²¤íŠ¸ 'EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 							error_count++;
 						}
 					} else {
 						getConfig().set("auto-register.events.Event_EntityDamagedByEnity.enabled", false);
-						console(prefix + "ÇÃ·¯±×ÀÎ ¼³Á¤¿¡ µû¶ó ÀÌº¥Æ® EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java) (Àº)´Â µî·ÏÇÏÁö ¾Ê½À´Ï´Ù.");
+						console(prefix + "í”ŒëŸ¬ê·¸ì¸ ì„¤ì •ì— ë”°ë¼ ì´ë²¤íŠ¸ EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java) (ì€)ëŠ” ë“±ë¡í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 					}
 				}
 
-				// ÀÌº¥Æ® µî·Ï: config.yml ÆÄÀÏÀÇ "auto-register.event.enable" Ç×¸ñÀÌ false ÀÏ °æ¿ì
+				// ì´ë²¤íŠ¸ ë“±ë¡: config.yml íŒŒì¼ì˜ "auto-register.event.enable" í•­ëª©ì´ false ì¼ ê²½ìš°
 				else if (getConfig().getBoolean("auto-register.events.enable") == false) {
-					console(error + "config.yml ÆÄÀÏ ¼³Á¤ Áß 'auto-enable.enable' ÀÇ Ç×¸ñÀÌ false ·Î µÇ¾î ÀÖ½À´Ï´Ù.");
-					console(error + "ÇÃ·¯±×ÀÎ È°¼ºÈ­ Áß ¸ğµç ÀÌº¥Æ®¸¦ ºÒ·¯¿ÀÁö ¾Ê½À´Ï´Ù. ¸í·É¾î¸¦ ÅëÇØ È°¼ºÈ­ ÇÏ¼¼¿ä.");
+					console(error + "config.yml íŒŒì¼ ì„¤ì • ì¤‘ 'auto-enable.enable' ì˜ í•­ëª©ì´ false ë¡œ ë˜ì–´ ìˆìŠµë‹ˆë‹¤.");
+					console(error + "í”ŒëŸ¬ê·¸ì¸ í™œì„±í™” ì¤‘ ëª¨ë“  ì´ë²¤íŠ¸ë¥¼ ë¶ˆëŸ¬ì˜¤ì§€ ì•ŠìŠµë‹ˆë‹¤. ëª…ë ¹ì–´ë¥¼ í†µí•´ í™œì„±í™” í•˜ì„¸ìš”.");
 				}
 
-				// Á¶ÇÕ¹ı µî·Ï: config.yml ÆÄÀÏÀÇ "auto-register.recipes.enable" Ç×¸ñÀÌ true ÀÏ °æ¿ì
+				// ì¡°í•©ë²• ë“±ë¡: config.yml íŒŒì¼ì˜ "auto-register.recipes.enable" í•­ëª©ì´ true ì¼ ê²½ìš°
 				else if (getConfig().getBoolean("auto-register.recipes.enable") == true) {
-					// COMMAND (TestRecipe.java) ÀÇ È°¼ºÈ­ »óÅÂ°¡ true ÀÏ °æ¿ì
+					// COMMAND (TestRecipe.java) ì˜ í™œì„±í™” ìƒíƒœê°€ true ì¼ ê²½ìš°
 					if (getConfig().getBoolean("auto-register.recipes.TestRecipe.uses") == true) {
-						// Á¶ÇÕ¹ı µî·Ï: COMMAND Á¶ÇÕ¹ı (TestRecipe.java)
+						// ì¡°í•©ë²• ë“±ë¡: COMMAND ì¡°í•©ë²• (TestRecipe.java)
 						try {
 							TestRecipe.createRecipe();
 							getConfig().set("auto-register.recipes.TestRecipe.enabled", true);
-							console(prefix + "Á¶ÇÕ¹ı 'COMMAND (TestRecipe.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù.");
+							console(prefix + "ì¡°í•©ë²• 'COMMAND (TestRecipe.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 						} catch (Exception e) {
 							e.printStackTrace();
-							console(error + "À§¿Í °°Àº ¹®Á¦·Î Á¶ÇÕ¹ı 'COMMAND (TestRecipe.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+							console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ì¡°í•©ë²• 'COMMAND (TestRecipe.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 							error_count++;
 						}
 					} else {
-						console(prefix + "ÇÃ·¯±×ÀÎ ¼³Á¤¿¡ µû¶ó Á¶ÇÕ¹ı COMMAND (TestReipce.java) (Àº)´Â µî·ÏÇÏÁö ¾Ê½À´Ï´Ù.");
+						console(prefix + "í”ŒëŸ¬ê·¸ì¸ ì„¤ì •ì— ë”°ë¼ ì¡°í•©ë²• COMMAND (TestReipce.java) (ì€)ëŠ” ë“±ë¡í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 					}
 				}
 			}
 			else {
-				console(prefix + "config.yml ÆÄÀÏÀÇ 'auto-register.enable' ÀÇ °ªÀÌ false ÀÌ±â ¶§¹®¿¡ È°¼ºÈ­½Ã ¾Æ¹«°Íµµ µî·ÏÇÏÁö ¾Ê½À´Ï´Ù.");
+				console(prefix + "config.yml íŒŒì¼ì˜ 'auto-register.enable' ì˜ ê°’ì´ false ì´ê¸° ë•Œë¬¸ì— í™œì„±í™”ì‹œ ì•„ë¬´ê²ƒë„ ë“±ë¡í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 			}
 		}
 
-		// config.yml ÆÄÀÏ ¿¡·¯ ½Ã
+		// config.yml íŒŒì¼ ì—ëŸ¬ ì‹œ
 		else {
-			console(prefix + "config.yml ÆÄÀÏÀÌ ·ÎµåµÇÁö ¾ÊÀº °ü°è·Î ±âº» »óÅÂ·Î ÃÊ±âÈ­¸¦ ÁøÇàÇÕ´Ï´Ù.");
-			// ÀÌº¥Æ® ¿¬°á: PlayerJoinEvent (Event_PlayerJoin.java)
+			console(prefix + "config.yml íŒŒì¼ì´ ë¡œë“œë˜ì§€ ì•Šì€ ê´€ê³„ë¡œ ê¸°ë³¸ ìƒíƒœë¡œ ì´ˆê¸°í™”ë¥¼ ì§„í–‰í•©ë‹ˆë‹¤.");
+			// ì´ë²¤íŠ¸ ì—°ê²°: PlayerJoinEvent (Event_PlayerJoin.java)
 			try {
 				pm.registerEvents(new Event_PlayerJoin(this), this);
-				console(prefix + "ÀÌº¥Æ® 'PlayerJoinEvent (Event_PlayerJoin.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù.");
+				console(prefix + "ì´ë²¤íŠ¸ 'PlayerJoinEvent (Event_PlayerJoin.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			} catch (Exception e) {
 				e.printStackTrace();
-				console(error + "À§¿Í °°Àº ¹®Á¦·Î ÀÌº¥Æ® 'PlayerJoinEvent (Event_PlayerJoin.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+				console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ì´ë²¤íŠ¸ 'PlayerJoinEvent (Event_PlayerJoin.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 				error_count++;
 			}
 
-			// ÀÌº¥Æ® ¿¬°á: InventoryClickEvent (SE_Event_Main.java)
+			// ì´ë²¤íŠ¸ ì—°ê²°: InventoryClickEvent (SE_Event_Main.java)
 			try {
 				pm.registerEvents(new SE_Event_Main(this), this);
-				console(prefix + "ÀÌº¥Æ® 'InventoryClickEvent (SE_Event_Main.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù.");
+				console(prefix + "ì´ë²¤íŠ¸ 'InventoryClickEvent (SE_Event_Main.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			} catch (Exception e) {
 				e.printStackTrace();
-				console(error + "À§¿Í °°Àº ¹®Á¦·Î ÀÌº¥Æ® 'InventoryClickEvent (SE_Event_Main.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+				console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ì´ë²¤íŠ¸ 'InventoryClickEvent (SE_Event_Main.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 				error_count++;
 			}
 
-			// ÀÌº¥Æ® ¿¬°á: InventoryClickEvent (Event_GUI_Test.java)
+			// ì´ë²¤íŠ¸ ì—°ê²°: InventoryClickEvent (Event_GUI_Test.java)
 			try {
 				pm.registerEvents(new Event_GUI_Test(this), this);
-				console(prefix + "ÀÌº¥Æ® 'InventoryClickEvent (Event_GUI_Test.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù.");
+				console(prefix + "ì´ë²¤íŠ¸ 'InventoryClickEvent (Event_GUI_Test.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			} catch (Exception e) {
 				e.printStackTrace();
-				console(error + "À§¿Í °°Àº ¹®Á¦·Î ÀÌº¥Æ® 'InventoryClickEvent (Event_GUI_Test.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+				console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ì´ë²¤íŠ¸ 'InventoryClickEvent (Event_GUI_Test.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 				error_count++;
 			}
 
-			// ÀÌº¥Æ® ¿¬°á: InventoryClickEvent (SE_Event_Passive.java)
+			// ì´ë²¤íŠ¸ ì—°ê²°: InventoryClickEvent (SE_Event_Passive.java)
 			try {
 				pm.registerEvents(new SE_Event_Passive(this), this);
-				console(prefix + "ÀÌº¥Æ® 'InventoryClickEvent (SE_Event_Passive.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù.");
+				console(prefix + "ì´ë²¤íŠ¸ 'InventoryClickEvent (SE_Event_Passive.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			} catch (Exception e) {
 				e.printStackTrace();
-				console(error + "À§¿Í °°Àº ¹®Á¦·Î ÀÌº¥Æ® 'InventoryClickEvent (SE_Event_Passive.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+				console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ì´ë²¤íŠ¸ 'InventoryClickEvent (SE_Event_Passive.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 				error_count++;
 			}
 
-			// Á¶ÇÕ¹ı µî·Ï: COMMAND Á¶ÇÕ¹ı (TestRecipe.java)
+			// ì¡°í•©ë²• ë“±ë¡: COMMAND ì¡°í•©ë²• (TestRecipe.java)
 			try {
 				TestRecipe.createRecipe();
-				console(prefix + "Á¶ÇÕ¹ı 'COMMAND (TestRecipe.java)' (À»)¸¦ ¼º°øÀûÀ¸·Î µî·ÏÇÏ¿´½À´Ï´Ù.");
+				console(prefix + "ì¡°í•©ë²• 'COMMAND (TestRecipe.java)' (ì„)ë¥¼ ì„±ê³µì ìœ¼ë¡œ ë“±ë¡í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			} catch (Exception e) {
 				e.printStackTrace();
-				console(error + "À§¿Í °°Àº ¹®Á¦·Î Á¶ÇÕ¹ı 'COMMAND (TestRecipe.java)' (À»)¸¦ µî·ÏÇÏÁö ¸øÇß½À´Ï´Ù.");
+				console(error + "ìœ„ì™€ ê°™ì€ ë¬¸ì œë¡œ ì¡°í•©ë²• 'COMMAND (TestRecipe.java)' (ì„)ë¥¼ ë“±ë¡í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 				error_count++;
 			}
 		}
 
-		// ¿¡·¯°¡ ¾øÀ» °æ¿ì
+		// ì—ëŸ¬ê°€ ì—†ì„ ê²½ìš°
 		if (error_count == 0) {
 			console(white + "=================================================================================");
-			console(prefix + yellow + fname + white + " (ÀÌ)°¡ ¼º°øÀûÀ¸·Î È°¼ºÈ­ µÇ¾ú½À´Ï´Ù!");
-			console(prefix + "È°¼ºÈ­ µµÁß ¿À·ù°¡ ¹ß»ıÇÏÁö ¾Ê¾Ò½À´Ï´Ù.");
+			console(prefix + yellow + fname + white + " (ì´)ê°€ ì„±ê³µì ìœ¼ë¡œ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤!");
+			console(prefix + "í™œì„±í™” ë„ì¤‘ ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
 			console(white + "=================================================================================");
 		}
 
-		// ¿¡·¯°¡ ¹ß»ıÇßÀ» °æ¿ì
+		// ì—ëŸ¬ê°€ ë°œìƒí–ˆì„ ê²½ìš°
 		else if (error_count > 0) {
 			console(white + "=================================================================================");
-			console(prefix + yellow + fname + white + " (ÀÌ)°¡ È°¼ºÈ­ µÇ¾ú½À´Ï´Ù! È°¼ºÈ­ µµÁß");
-			console(prefix + red + "È°¼ºÈ­ µµÁß " + yellow + error_count + red + " °³ÀÇ Å¬·¡½º¿¡¼­ ¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
+			console(prefix + yellow + fname + white + " (ì´)ê°€ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤! í™œì„±í™” ë„ì¤‘");
+			console(prefix + red + "í™œì„±í™” ë„ì¤‘ " + yellow + error_count + red + " ê°œì˜ í´ë˜ìŠ¤ì—ì„œ ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
 			console(white + "=================================================================================");
 		}
 
-		// ¹ß»ıÇÒ ¼ö ¾ø´Â ÀÌº¥Æ® (È¤½Ã ¸ğ¸£´Ï±î..)
+		// ë°œìƒí•  ìˆ˜ ì—†ëŠ” ì´ë²¤íŠ¸ (í˜¹ì‹œ ëª¨ë¥´ë‹ˆê¹Œ..)
 		else {
 			console(white + "=================================================================================");
-			console(prefix + yellow + fname + white + " (ÀÌ)°¡ È°¼ºÈ­ µÇ¾ú½À´Ï´Ù!" + red + " ¾Ë ¼ö ¾ø´Â ¿À·ù°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù.");
+			console(prefix + yellow + fname + white + " (ì´)ê°€ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤!" + red + " ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤.");
 			console(white + "=================================================================================");
 		}
 
@@ -329,58 +329,58 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		console(white + "=================================================================================");
-		console(prefix + "ÇÃ·¯±×ÀÎ ºñÈ°¼ºÈ­¸¦ ÁØºñÇÏ´Â Áß ÀÔ´Ï´Ù...");
+		console(prefix + "í”ŒëŸ¬ê·¸ì¸ ë¹„í™œì„±í™”ë¥¼ ì¤€ë¹„í•˜ëŠ” ì¤‘ ì…ë‹ˆë‹¤...");
 		console(white + "=================================================================================");
 
 		/*
-		 * ÆŞ¹Ì¼Ç ÇØÁ¦: 0
+		 * í„ë¯¸ì…˜ í•´ì œ: 0
 		 * 
-		 * Á¶ÇÕ¹ı Á¦°Å: 1
+		 * ì¡°í•©ë²• ì œê±°: 1
 		 * 
-		 * ´Ù¸¥ Å¬·¡½º ¿¬°á ÇØÁ¦: 0
+		 * ë‹¤ë¥¸ í´ë˜ìŠ¤ ì—°ê²° í•´ì œ: 0
 		 * 
-		 * config.yml ÀúÀå
+		 * config.yml ì €ì¥
 		 */
 		
-		// COMMAND Á¶ÇÕ¹ı ÇØÁ¦
+		// COMMAND ì¡°í•©ë²• í•´ì œ
 		try {
 			Bukkit.clearRecipes();
-			console(prefix + "Á¶ÇÕ¹ı 'COMMAND (TestRecipe.java)' (ÀÌ)°¡ ¼º°øÀûÀ¸·Î ÇØÁ¦µÇ¾ú½À´Ï´Ù.");
+			console(prefix + "ì¡°í•©ë²• 'COMMAND (TestRecipe.java)' (ì´)ê°€ ì„±ê³µì ìœ¼ë¡œ í•´ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			console(error + "Æ¯Á¤ Á¶ÇÕ¹ı 'COMMAND (TestRecipe.java)' (À»)¸¦ ÇØÁ¦ÇÏÁö ¸øÇß½À´Ï´Ù. ¸ğµç Á¶ÇÕ¹ıÀ» °­Á¦·Î ÇØÁ¦ÇÕ´Ï´Ù.");
+			console(error + "íŠ¹ì • ì¡°í•©ë²• 'COMMAND (TestRecipe.java)' (ì„)ë¥¼ í•´ì œí•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤. ëª¨ë“  ì¡°í•©ë²•ì„ ê°•ì œë¡œ í•´ì œí•©ë‹ˆë‹¤.");
 			Bukkit.clearRecipes();
-			console(warning + "±âº» Á¶ÇÕ¹ıÀ» Á¦¿ÜÇÑ ÇÃ·¯±×ÀÎÀ¸·Î »ı¼ºµÈ ¸ğµç Á¶ÇÕ¹ıÀÌ °­Á¦·Î ÇØÁ¦µÇ¾ú½À´Ï´Ù.");
+			console(warning + "ê¸°ë³¸ ì¡°í•©ë²•ì„ ì œì™¸í•œ í”ŒëŸ¬ê·¸ì¸ìœ¼ë¡œ ìƒì„±ëœ ëª¨ë“  ì¡°í•©ë²•ì´ ê°•ì œë¡œ í•´ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}
 		
 		try {
 			saveConfig();
-			console(prefix + "config.yml ÆÄÀÏÀÌ Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù.");
+			console(prefix + "config.yml íŒŒì¼ì´ ì •ìƒì ìœ¼ë¡œ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			console(error + "À§¿Í °°Àº ÀÌÀ¯·Î ÀÎÇØ config.yml ÆÄÀÏÀÌ ÀúÀåµÇÁö ¸øÇß½À´Ï´Ù.");
+			console(error + "ìœ„ì™€ ê°™ì€ ì´ìœ ë¡œ ì¸í•´ config.yml íŒŒì¼ì´ ì €ì¥ë˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 		}
 
-		// Á¾·á ¸Ş¼¼Áö Ãâ·Â
+		// ì¢…ë£Œ ë©”ì„¸ì§€ ì¶œë ¥
 		console(white + "=================================================================================");
-		console(prefix + yellow + fname + white + " (ÀÌ)°¡ ¼º°øÀûÀ¸·Î ºñÈ°¼ºÈ­ µÇ¾ú½À´Ï´Ù!");
-		console(prefix + "ÀÌ ÇÃ·¯±×ÀÎÀ» »ç¿ëÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù!");
-		console(prefix + "ÇöÀç " + rel_type + " ¹öÀüÀÌ¹Ç·Î GitHub ¿¡¼­ ¼Ò½ºÄÚµå¸¦ È®ÀÎÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù!");
-		console(prefix + "¸µÅ©: " + aqua + "https://github.com/stageroad0820/Research");
+		console(prefix + yellow + fname + white + " (ì´)ê°€ ì„±ê³µì ìœ¼ë¡œ ë¹„í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤!");
+		console(prefix + "ì´ í”ŒëŸ¬ê·¸ì¸ì„ ì‚¬ìš©í•´ ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤!");
+		console(prefix + "í˜„ì¬ " + rel_type + " ë²„ì „ì´ë¯€ë¡œ GitHub ì—ì„œ ì†ŒìŠ¤ì½”ë“œë¥¼ í™•ì¸í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤!");
+		console(prefix + "ë§í¬: " + aqua + "https://github.com/stageroad0820/Research");
 		console(white + "=================================================================================");
-		console(prefix + "ÀúÀÛ±Ç: Copyright (C) stageroad0820. All right reserved.");
-		console(prefix + "¶óÀÌ¼±½º: GNU GPLv3 License");
+		console(prefix + "ì €ì‘ê¶Œ: Copyright (C) stageroad0820. All right reserved.");
+		console(prefix + "ë¼ì´ì„ ìŠ¤: GNU GPLv3 License");
 		console(white + "=================================================================================\n\n");
 
 		super.onDisable();
 	}
 
-	// ÄÜ¼Ö ¸Ş¼¼Áö Ãâ·Â ¸Ş¼Òµå
+	// ì½˜ì†” ë©”ì„¸ì§€ ì¶œë ¥ ë©”ì†Œë“œ
 	public static void console(String msg) {
 		Bukkit.getConsoleSender().sendMessage(msg);
 	}
 
-	// Àü ¼­¹ö °øÁö ¸Ş¼¼Áö Ãâ·Â ¸Ş¼Òµå
+	// ì „ ì„œë²„ ê³µì§€ ë©”ì„¸ì§€ ì¶œë ¥ ë©”ì†Œë“œ
 	public static void notice(String args) {
 		Bukkit.broadcastMessage(nts + args);
 	}

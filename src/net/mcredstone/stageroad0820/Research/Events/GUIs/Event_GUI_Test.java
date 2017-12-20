@@ -14,16 +14,16 @@ import net.mcredstone.stageroad0820.Research.GUIs.GUI_Test;
 import net.mcredstone.stageroad0820.Research.GUIs.SelectEntity.SE_GUI_Main;
 
 public class Event_GUI_Test implements Listener {
-	// ÇÃ·¯±×ÀÎ¿¡ ÇÊ¿äÇÑ °´Ã¼ »ı¼º ¹× ¼±¾ğ
+	// í”ŒëŸ¬ê·¸ì¸ì— í•„ìš”í•œ ê°ì²´ ìƒì„± ë° ì„ ì–¸
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static Main res_main;
 
-	// Å¬·¡½º ¿¬°á
+	// í´ë˜ìŠ¤ ì—°ê²°
 	public Event_GUI_Test(Main plugin) {
 		Event_GUI_Test.res_main = plugin;
 	}
 
-	// ChatColor °£·«È­
+	// ChatColor ê°„ëµí™”
 	String aqua = ChatColor.AQUA + "";
 	String black = ChatColor.BLACK + "";
 	String blue = ChatColor.BLUE + "";
@@ -48,7 +48,7 @@ public class Event_GUI_Test implements Listener {
 	String strth = ChatColor.STRIKETHROUGH + "";
 	String under = ChatColor.UNDERLINE + "";
 
-	// ÀÚÁÖ »ç¿ëÇÏ´Â String °ª °£·«È­
+	// ìì£¼ ì‚¬ìš©í•˜ëŠ” String ê°’ ê°„ëµí™”
 	String prefix = aqua + "[Research] " + white + "";
 	String error = dred + "[Res Error] " + red + "";
 	String warning = yellow + "[Res Warning] " + white + "";
@@ -57,37 +57,37 @@ public class Event_GUI_Test implements Listener {
 	public void onInventoryClick(InventoryClickEvent event) {
 		Player player = (Player) event.getWhoClicked();
 
-		// ÀÎº¥Åä¸®ÀÇ Á¦¸ñÀÌ "¿£Æ¼Æ¼¸¦ ¼±ÅÃÇÏ¼¼¿ä" °¡ ¾Æ´Ñ °æ¿ì ÀÌº¥Æ® ÀÛµ¿ Ãë¼Ò
-		if (!event.getInventory().getTitle().equalsIgnoreCase("Research ÇÃ·¯±×ÀÎ - GUI ±â´É Å×½ºÆ®")) {
+		// ì¸ë²¤í† ë¦¬ì˜ ì œëª©ì´ "ì—”í‹°í‹°ë¥¼ ì„ íƒí•˜ì„¸ìš”" ê°€ ì•„ë‹Œ ê²½ìš° ì´ë²¤íŠ¸ ì‘ë™ ì·¨ì†Œ
+		if (!event.getInventory().getTitle().equalsIgnoreCase("Research í”ŒëŸ¬ê·¸ì¸ - GUI ê¸°ëŠ¥ í…ŒìŠ¤íŠ¸")) {
 			return;
 		}
 		
 		switch (event.getCurrentItem().getType()) {
 		case WOOD_DOOR:
-			// Å×½ºµå ¸ğµå Á¾·á
+			// í…ŒìŠ¤ë“œ ëª¨ë“œ ì¢…ë£Œ
 			MainCommand.isTest = false;
 			player.closeInventory();
-			player.sendMessage(prefix + "Å×½ºÆ® ¸ğµå°¡ Á¾·áµÇ¾ú½À´Ï´Ù. ´Ù½Ã Å×½ºÆ® ¸ğµå·Î ÁøÀÔÇÏ½Ã·Á¸é " + yellow + "/res test gui"
-					+ white + " Ä¿¸Çµå¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+			player.sendMessage(prefix + "í…ŒìŠ¤íŠ¸ ëª¨ë“œê°€ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ í…ŒìŠ¤íŠ¸ ëª¨ë“œë¡œ ì§„ì…í•˜ì‹œë ¤ë©´ " + yellow + "/res test gui"
+					+ white + " ì»¤ë§¨ë“œë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
 			break;
 		case WOOL:
-			// Å×½ºÆ® ¾øÀ½
+			// í…ŒìŠ¤íŠ¸ ì—†ìŒ
 			break;
 		case BLAZE_ROD:
-			// ¿£Æ¼Æ¼ ¼ÒÈ¯ GUI - Å×½ºÆ®
+			// ì—”í‹°í‹° ì†Œí™˜ GUI - í…ŒìŠ¤íŠ¸
 			SE_GUI_Main.openInv(player);
 			break;
 		case RAILS:
-			// ´ÙÀ½ ÆäÀÌÁö
+			// ë‹¤ìŒ í˜ì´ì§€
 			break;
 		case LADDER:
-			// ÀÌÀü ÆäÀÌÁö
+			// ì´ì „ í˜ì´ì§€
 			break;
 		case BOOK:
-			// ÇöÀç ÆäÀÌÁö
+			// í˜„ì¬ í˜ì´ì§€
 			break;
 		default:
-			// À§¿Í °ü·Ã ¾ø´Â ¾ÆÀÌÅÛ Å¬¸¯½Ã GUI »õ·Î °íÄ§
+			// ìœ„ì™€ ê´€ë ¨ ì—†ëŠ” ì•„ì´í…œ í´ë¦­ì‹œ GUI ìƒˆë¡œ ê³ ì¹¨
 			GUI_Test.openInv(player);
 			break;
 		}

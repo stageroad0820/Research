@@ -13,7 +13,7 @@ import net.mcredstone.stageroad0820.Research.GUIs.SelectEntity.SE_GUI_Main;
 import net.mcredstone.stageroad0820.Research.GUIs.SelectEntity.SE_GUI_Passive;
 
 public class SE_Event_Main implements Listener {
-	// ÇÃ·¯±×ÀÎ¿¡ ÇÊ¿äÇÑ °´Ã¼ »ı¼º ¹× ¼±¾ğ
+	// í”ŒëŸ¬ê·¸ì¸ì— í•„ìš”í•œ ê°ì²´ ìƒì„± ë° ì„ ì–¸
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static Main res_main;
 
@@ -21,7 +21,7 @@ public class SE_Event_Main implements Listener {
 		SE_Event_Main.res_main = plugin;
 	}
 
-	// ChatColor °£·«È­
+	// ChatColor ê°„ëµí™”
 	String aqua = ChatColor.AQUA + "";
 	String black = ChatColor.BLACK + "";
 	String blue = ChatColor.BLUE + "";
@@ -46,55 +46,55 @@ public class SE_Event_Main implements Listener {
 	String strth = ChatColor.STRIKETHROUGH + "";
 	String under = ChatColor.UNDERLINE + "";
 
-	// ÀÚÁÖ »ç¿ëÇÏ´Â String °ª °£·«È­
+	// ìì£¼ ì‚¬ìš©í•˜ëŠ” String ê°’ ê°„ëµí™”
 	String debug = dgray + "[Res Debug]" + white + "";
 
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent event) {
 		Player player = (Player) event.getWhoClicked();
 
-		// ÀÎº¥Åä¸®ÀÇ Á¦¸ñÀÌ "¿£Æ¼Æ¼¸¦ ¼±ÅÃÇÏ¼¼¿ä" °¡ ¾Æ´Ñ °æ¿ì ÀÌº¥Æ® ÀÛµ¿ Ãë¼Ò
-		if (!event.getInventory().getTitle().equalsIgnoreCase("¿£Æ¼Æ¼¸¦ ¼±ÅÃÇÏ¼¼¿ä")) {
+		// ì¸ë²¤í† ë¦¬ì˜ ì œëª©ì´ "ì—”í‹°í‹°ë¥¼ ì„ íƒí•˜ì„¸ìš”" ê°€ ì•„ë‹Œ ê²½ìš° ì´ë²¤íŠ¸ ì‘ë™ ì·¨ì†Œ
+		if (!event.getInventory().getTitle().equalsIgnoreCase("ì—”í‹°í‹°ë¥¼ ì„ íƒí•˜ì„¸ìš”")) {
 			return;
 		}
 
 		switch (event.getCurrentItem().getType()) {
 		case BOOK_AND_QUILL:
-			// ÀüÃ¼ ¿£Æ¼Æ¼ ¸ñ·Ï
+			// ì „ì²´ ì—”í‹°í‹° ëª©ë¡
 
 			break;
 
 		case WOOL:
-			// Ä£È­Àû ¸÷
+			// ì¹œí™”ì  ëª¹
 			SE_GUI_Passive.openInv(player);
 			break;
 
 		case SHIELD:
-			// Áß¸³Àû ¸÷
+			// ì¤‘ë¦½ì  ëª¹
 			break;
 
 		case DIAMOND_SWORD:
-			// Àû´ëÀû ¸÷
+			// ì ëŒ€ì  ëª¹
 			SE_GUI_Main.openInv(player);
 			break;
 
 		case FEATHER:
-			// ±æµéÀÌ±â °¡´ÉÇÑ ¸÷
+			// ê¸¸ë“¤ì´ê¸° ê°€ëŠ¥í•œ ëª¹
 			SE_GUI_Main.openInv(player);
 			break;
 
 		case DRAGON_EGG:
-			// º¸½º ¸÷
+			// ë³´ìŠ¤ ëª¹
 			SE_GUI_Main.openInv(player);
 			break;
 
 		case COMMAND:
-			// ±âÅ¸ ¸÷
+			// ê¸°íƒ€ ëª¹
 			SE_GUI_Main.openInv(player);
 			break;
 
 		default:
-			// ÇÃ·¹ÀÌ¾î°¡ À§ÀÇ ¾ÆÀÌÅÛ ¿Ü ´Ù¸¥ ¾ÆÀÌÅÛÀ» Å¬¸¯ÇßÀ» °æ¿ì
+			// í”Œë ˆì´ì–´ê°€ ìœ„ì˜ ì•„ì´í…œ ì™¸ ë‹¤ë¥¸ ì•„ì´í…œì„ í´ë¦­í–ˆì„ ê²½ìš°
 			SE_GUI_Main.openInv(player);
 			break;
 		}

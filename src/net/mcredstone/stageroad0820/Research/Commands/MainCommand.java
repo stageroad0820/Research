@@ -28,19 +28,19 @@ import net.minecraft.server.v1_11_R1.PacketPlayOutNamedEntitySpawn;
 
 @SuppressWarnings({ "static-access", "unused" })
 public class MainCommand implements CommandExecutor {
-	// Å¬·¡½º¿¡ ÇÊ¿äÇÑ °´Ã¼ »ı¼º ¹× ÃÊ±âÈ­
+	// í´ë˜ìŠ¤ì— í•„ìš”í•œ ê°ì²´ ìƒì„± ë° ì´ˆê¸°í™”
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static Main res_main;
 
-	// ¸ŞÀÎ Å¬·¡½º¿Í ¿¬°á
+	// ë©”ì¸ í´ë˜ìŠ¤ì™€ ì—°ê²°
 	public MainCommand(Main plugin) {
 		MainCommand.res_main = plugin;
 	}
 
-	// ÇÃ·¯±×ÀÎ °ü¸®ÀÚ °´Ã¼
+	// í”ŒëŸ¬ê·¸ì¸ ê´€ë¦¬ì ê°ì²´
 	PluginManager pm = Bukkit.getServer().getPluginManager();
 
-	// ChatColor °£·«È­
+	// ChatColor ê°„ëµí™”
 	String aqua = ChatColor.AQUA + "";
 	String black = ChatColor.BLACK + "";
 	String blue = ChatColor.BLUE + "";
@@ -65,7 +65,7 @@ public class MainCommand implements CommandExecutor {
 	String strth = ChatColor.STRIKETHROUGH + "";
 	String under = ChatColor.UNDERLINE + "";
 
-	// ÀÚÁÖ »ç¿ëÇÏ´Â String °ª °£·«È­
+	// ìì£¼ ì‚¬ìš©í•˜ëŠ” String ê°’ ê°„ëµí™”
 	String prefix = aqua + "[Research] " + white + "";
 	String error = dred + "[Res Error] " + red + "";
 	String warning = yellow + "[Res Warning] " + white + "";
@@ -74,176 +74,176 @@ public class MainCommand implements CommandExecutor {
 	String cleft = yellow + " : " + white + "";
 	String vleft = green +" | " + aqua + "";
 
-	// º¯¼ö ¼±¾ğ ¹× ÃÊ±âÈ­
+	// ë³€ìˆ˜ ì„ ì–¸ ë° ì´ˆê¸°í™”
 	public static boolean isTest = false;
 	public static boolean isDebug = false;
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-		// ¸í·É¾î Àü¼ÛÀÚ°¡ "ÇÃ·¹ÀÌ¾î" ÀÏ °æ¿ì
+		// ëª…ë ¹ì–´ ì „ì†¡ìê°€ "í”Œë ˆì´ì–´" ì¼ ê²½ìš°
 		if (sender instanceof Player) {
 			Player player = (Player) sender;
 			Location loc = player.getLocation();
 
-			// Ä¿¸Çµå¸¦ "/research" ¿Í "/res" ·Î »ç¿ë °¡´ÉÇÏ°Ô ¼³Á¤
+			// ì»¤ë§¨ë“œë¥¼ "/research" ì™€ "/res" ë¡œ ì‚¬ìš© ê°€ëŠ¥í•˜ê²Œ ì„¤ì •
 			if (commandLabel.equalsIgnoreCase("research") || commandLabel.equalsIgnoreCase("res")) {
-				// ÇÏÀ§ Ä¿¸Çµå ¾øÀÌ ¸ŞÀÎ Ä¿¸Çµå¸¸ ÀÔ·ÂÇßÀ» °æ¿ì
+				// í•˜ìœ„ ì»¤ë§¨ë“œ ì—†ì´ ë©”ì¸ ì»¤ë§¨ë“œë§Œ ì…ë ¥í–ˆì„ ê²½ìš°
 				if (args.length == 0) {
-					player.sendMessage(error + "ÀÔ·ÂÇÏ½Å ¸í·É¾îÀÇ ÀÎÀÚ °ªÀÌ ³Ê¹« Àû°Å³ª ¾ø½À´Ï´Ù!" + yellow + " /res help ¶Ç´Â /research help "
-							+ red + " ¸¦ ÅëÇØ Research ÇÃ·¯±×ÀÎÀÇ ´õ ¸¹Àº ¸í·É¾î¸¦ ¾Ë¾Æº¸¼¼¿ä!");
+					player.sendMessage(error + "ì…ë ¥í•˜ì‹  ëª…ë ¹ì–´ì˜ ì¸ì ê°’ì´ ë„ˆë¬´ ì ê±°ë‚˜ ì—†ìŠµë‹ˆë‹¤!" + yellow + " /res help ë˜ëŠ” /research help "
+							+ red + " ë¥¼ í†µí•´ Research í”ŒëŸ¬ê·¸ì¸ì˜ ë” ë§ì€ ëª…ë ¹ì–´ë¥¼ ì•Œì•„ë³´ì„¸ìš”!");
 				}
-				// ÇÏÀ§ Ä¿¸Çµåµµ °°ÀÌ ÀÔ·ÂÇÒ °æ¿ì
+				// í•˜ìœ„ ì»¤ë§¨ë“œë„ ê°™ì´ ì…ë ¥í•  ê²½ìš°
 				else {
-					// Ä¿¸Çµå "/res help"
+					// ì»¤ë§¨ë“œ "/res help"
 					if (args[0].equalsIgnoreCase("help")) {
-						player.sendMessage(prefix + "¸í·É¾î Àü¼ÛÀÚ: " + yellow + "ÇÃ·¹ÀÌ¾î");
-						player.sendMessage(green + "=-=-=-=-=-=-=-=-=-= Research ÇÃ·¯±×ÀÎ ¸í·É¾î : ÇÃ·¹ÀÌ¾î =-=-=-=-=-=-=-=-=-=");
-						player.sendMessage(gold + "< /res ¿Í /research ·Î ¾Æ·¡ÀÇ Ä¿¸ÇµåµéÀ» »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù! >");
-						player.sendMessage(green + "/res help" + cleft + "¸í·É¾î Àü¼ÛÀÚ¿¡ µû¶ó Research ÇÃ·¯±×ÀÎÀÇ ¸í·É¾î µµ¿ò¸»À» Ãâ·ÂÇÕ´Ï´Ù.");
-						player.sendMessage(green + "/res enum <enum>" + cleft + "¿­°ÅÇü(Enumation) ÀÇ Å×½ºÆ®¸¦ ÁøÇàÇÕ´Ï´Ù.");
+						player.sendMessage(prefix + "ëª…ë ¹ì–´ ì „ì†¡ì: " + yellow + "í”Œë ˆì´ì–´");
+						player.sendMessage(green + "=-=-=-=-=-=-=-=-=-= Research í”ŒëŸ¬ê·¸ì¸ ëª…ë ¹ì–´ : í”Œë ˆì´ì–´ =-=-=-=-=-=-=-=-=-=");
+						player.sendMessage(gold + "< /res ì™€ /research ë¡œ ì•„ë˜ì˜ ì»¤ë§¨ë“œë“¤ì„ ì‚¬ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤! >");
+						player.sendMessage(green + "/res help" + cleft + "ëª…ë ¹ì–´ ì „ì†¡ìì— ë”°ë¼ Research í”ŒëŸ¬ê·¸ì¸ì˜ ëª…ë ¹ì–´ ë„ì›€ë§ì„ ì¶œë ¥í•©ë‹ˆë‹¤.");
+						player.sendMessage(green + "/res enum <enum>" + cleft + "ì—´ê±°í˜•(Enumation) ì˜ í…ŒìŠ¤íŠ¸ë¥¼ ì§„í–‰í•©ë‹ˆë‹¤.");
 						player.sendMessage(
-								green + "/res spawn <help/gui/entity>" + cleft + "¿£Æ¼Æ¼¸¦ ÇÃ·¹ÀÌ¾î°¡ ¹Ù¶óº¸´Â ¹æÇâ¿¡ ¼ÒÈ¯ÇÕ´Ï´Ù.");
-						player.sendMessage(green + "/res info" + cleft + "ÇÃ·¯±×ÀÎÀÇ Á¤º¸¸¦ È®ÀÎÇÕ´Ï´Ù.");
+								green + "/res spawn <help/gui/entity>" + cleft + "ì—”í‹°í‹°ë¥¼ í”Œë ˆì´ì–´ê°€ ë°”ë¼ë³´ëŠ” ë°©í–¥ì— ì†Œí™˜í•©ë‹ˆë‹¤.");
+						player.sendMessage(green + "/res info" + cleft + "í”ŒëŸ¬ê·¸ì¸ì˜ ì •ë³´ë¥¼ í™•ì¸í•©ë‹ˆë‹¤.");
 						player.sendMessage(
-								green + "/res nickname <name/reset>" + cleft + "ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§À» º¯°æÇÕ´Ï´Ù. reset À¸·Î ÃÊ±âÈ­ ÇÕ´Ï´Ù.");
+								green + "/res nickname <name/reset>" + cleft + "í”Œë ˆì´ì–´ì˜ ì´ë¦„ì„ ë³€ê²½í•©ë‹ˆë‹¤. reset ìœ¼ë¡œ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.");
 						player.sendMessage(
-								red + "/res nametag <name/reset>" + cleft + "ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§Ç¥¸¦ º¯°æÇÕ´Ï´Ù. reset À¸·Î ÃÊ±âÈ­ ÇÕ´Ï´Ù.");
-						player.sendMessage(green + "/res test <help/...>" + cleft + "¾ÆÁ÷ ¿Ï¼ºµÇÁö ¾ÊÀº ±â´ÉµéÀ» Å×½ºÆ® ÇÕ´Ï´Ù.");
+								red + "/res nametag <name/reset>" + cleft + "í”Œë ˆì´ì–´ì˜ ì´ë¦„í‘œë¥¼ ë³€ê²½í•©ë‹ˆë‹¤. reset ìœ¼ë¡œ ì´ˆê¸°í™” í•©ë‹ˆë‹¤.");
+						player.sendMessage(green + "/res test <help/...>" + cleft + "ì•„ì§ ì™„ì„±ë˜ì§€ ì•Šì€ ê¸°ëŠ¥ë“¤ì„ í…ŒìŠ¤íŠ¸ í•©ë‹ˆë‹¤.");
 						player.sendMessage(
-								green + "/res event <enable/disable> <class>" + cleft + "ÇÃ·¯±×ÀÎÀÇ ÀÌº¥Æ®¸¦ È°¼ºÈ­ ÇÏ°Å³ª ºñÈ°¼ºÈ­ ÇÕ´Ï´Ù.");
+								green + "/res event <enable/disable> <class>" + cleft + "í”ŒëŸ¬ê·¸ì¸ì˜ ì´ë²¤íŠ¸ë¥¼ í™œì„±í™” í•˜ê±°ë‚˜ ë¹„í™œì„±í™” í•©ë‹ˆë‹¤.");
 						player.sendMessage(
 								green + "=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 					}
 
-					// Ä¿¸Çµå "/res enum <list>"
+					// ì»¤ë§¨ë“œ "/res enum <list>"
 					else if (args[0].equalsIgnoreCase("enum")) {
-						// <list> ºÎºĞÀ» ÀÔ·ÂÇÏÁö ¾Ê¾ÒÀ» °æ¿ì
+						// <list> ë¶€ë¶„ì„ ì…ë ¥í•˜ì§€ ì•Šì•˜ì„ ê²½ìš°
 						if (args.length == 1) {
-							player.sendMessage(error + "¿­°ÅÇü ¸ñ·ÏÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù! ¾Æ·¡ÀÇ ¿­°ÅÇü ¸ñ·ÏÀ» Âü°íÇÏ¿© ¸í·É¾î¸¦ ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä!");
+							player.sendMessage(error + "ì—´ê±°í˜• ëª©ë¡ì´ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤! ì•„ë˜ì˜ ì—´ê±°í˜• ëª©ë¡ì„ ì°¸ê³ í•˜ì—¬ ëª…ë ¹ì–´ë¥¼ ë‹¤ì‹œ ì…ë ¥í•´ ì£¼ì„¸ìš”!");
 							player.sendMessage(error + "APPLE, CHOCOLATE, RAMEN, RICE, CORN, SUGAR_CUBE");
 						}
-						// <list> ºÎºĞÀ» ÀÔ·ÂÇßÀ» °æ¿ì
+						// <list> ë¶€ë¶„ì„ ì…ë ¥í–ˆì„ ê²½ìš°
 						else {
 							for (EnumTest e : EnumTest.getFoods()) {
 								if (args[1].equalsIgnoreCase(e.foodName)) {
-									String str = e.healthy ? "°Ç°­ÇÑ À½½ÄÀÔ´Ï´Ù!" : "°Ç°­ÇÏÁö ¾ÊÀº À½½ÄÀÔ´Ï´Ù!";
+									String str = e.healthy ? "ê±´ê°•í•œ ìŒì‹ì…ë‹ˆë‹¤!" : "ê±´ê°•í•˜ì§€ ì•Šì€ ìŒì‹ì…ë‹ˆë‹¤!";
 									String fdName = "";
 
 									switch (e.foodName) {
 									case "apple":
-										fdName = "»ç°ú";
+										fdName = "ì‚¬ê³¼";
 										break;
 									case "chocolate":
-										fdName = "ÃÊÄİ¸´";
+										fdName = "ì´ˆì½œë¦¿";
 										break;
 									case "ramen":
-										fdName = "¶ó¸é";
+										fdName = "ë¼ë©´";
 										break;
 									case "rice":
-										fdName = "¹ä";
+										fdName = "ë°¥";
 										break;
 									case "corn":
-										fdName = "¿Á¼ö¼ö";
+										fdName = "ì˜¥ìˆ˜ìˆ˜";
 										break;
 									case "sugar_cube":
-										fdName = "°¢¼³ÅÁ";
+										fdName = "ê°ì„¤íƒ•";
 										break;
 									default:
 										break;
 									}
 
-									player.sendMessage(prefix + "EnumTest.class ÀÇ Å×½ºÆ®°¡ ¼º°øÀûÀ¸·Î Á¾·áµÇ¾ú½À´Ï´Ù! °á°ú: ");
-									player.sendMessage(prefix + fdName + " (Àº)´Â " + str);
+									player.sendMessage(prefix + "EnumTest.class ì˜ í…ŒìŠ¤íŠ¸ê°€ ì„±ê³µì ìœ¼ë¡œ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤! ê²°ê³¼: ");
+									player.sendMessage(prefix + fdName + " (ì€)ëŠ” " + str);
 									break;
 								}
 							}
 						}
 					}
 
-					// Ä¿¸Çµå "/res spawn"
+					// ì»¤ë§¨ë“œ "/res spawn"
 					else if (args[0].equalsIgnoreCase("spawn")) {
-						// Ãß°¡ ¸í·É¾î¸¦ ÀÔ·ÂÇÏÁö ¾ÊÀº °æ¿ì
+						// ì¶”ê°€ ëª…ë ¹ì–´ë¥¼ ì…ë ¥í•˜ì§€ ì•Šì€ ê²½ìš°
 						if (args.length == 1) {
-							player.sendMessage(error + "Ãß°¡ ¸í·É¾î°¡ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù. Ãß°¡ ¸í·É¾î¸¦ È®ÀÎÇÏ½Ã·Á¸é" + yellow + "/res spawn help"
-									+ red + " ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
+							player.sendMessage(error + "ì¶”ê°€ ëª…ë ¹ì–´ê°€ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤. ì¶”ê°€ ëª…ë ¹ì–´ë¥¼ í™•ì¸í•˜ì‹œë ¤ë©´" + yellow + "/res spawn help"
+									+ red + " ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 						}
-						// ÀÔ·ÂÇÑ °æ¿ì
+						// ì…ë ¥í•œ ê²½ìš°
 						else {
-							// µµ¿ò¸»
+							// ë„ì›€ë§
 							if (args[1].equalsIgnoreCase("help")) {
 								player.sendMessage(
-										green + "=-=-=-=-=-=-=-=-=- Research ÇÃ·¯±×ÀÎ - ¿£Æ¼Æ¼ ¸í·É¾î ¸ñ·Ï =-=-=-=-=-=-=-=-=-");
-								player.sendMessage(green + "help" + cleft + "/res spawn ÀÇ Ãß°¡ ¸í·É¾î¸¦ È®ÀÎÇÕ´Ï´Ù.");
+										green + "=-=-=-=-=-=-=-=-=- Research í”ŒëŸ¬ê·¸ì¸ - ì—”í‹°í‹° ëª…ë ¹ì–´ ëª©ë¡ =-=-=-=-=-=-=-=-=-");
+								player.sendMessage(green + "help" + cleft + "/res spawn ì˜ ì¶”ê°€ ëª…ë ¹ì–´ë¥¼ í™•ì¸í•©ë‹ˆë‹¤.");
 								player.sendMessage(green + "entity <list [page]/[entity name]>" + cleft
-										+ "ÇÃ·¹ÀÌ¾î°¡ ÀÖ´Â À§Ä¡¿¡ ¿£Æ¼Æ¼¸¦ Á÷Á¢ ¼ÒÈ¯ÇÕ´Ï´Ù.");
+										+ "í”Œë ˆì´ì–´ê°€ ìˆëŠ” ìœ„ì¹˜ì— ì—”í‹°í‹°ë¥¼ ì§ì ‘ ì†Œí™˜í•©ë‹ˆë‹¤.");
 								player.sendMessage(
-										green + "gui" + cleft + "GUI ¸¦ ÅëÇØ ¿£Æ¼Æ¼¸¦ ¼ÒÈ¯ÇÏ¸ç, ¿øÇÏ´Â À§Ä¡¿¡ ¼ÒÈ¯ÇÒ ¼ö ÀÖ´Â ¸·´ë±â¸¦ ¹Ş½À´Ï´Ù.");
+										green + "gui" + cleft + "GUI ë¥¼ í†µí•´ ì—”í‹°í‹°ë¥¼ ì†Œí™˜í•˜ë©°, ì›í•˜ëŠ” ìœ„ì¹˜ì— ì†Œí™˜í•  ìˆ˜ ìˆëŠ” ë§‰ëŒ€ê¸°ë¥¼ ë°›ìŠµë‹ˆë‹¤.");
 								player.sendMessage(green
 										+ "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 							}
-							// ¿£Æ¼Æ¼ Á÷Á¢ ¼ÒÈ¯
+							// ì—”í‹°í‹° ì§ì ‘ ì†Œí™˜
 							else if (args[1].equalsIgnoreCase("entity")) {
-								// ¿£Æ¼Æ¼ ÀÌ¸§À» ÀÔ·ÂÇÏÁö ¾Ê¾ÒÀ» °æ¿ì
+								// ì—”í‹°í‹° ì´ë¦„ì„ ì…ë ¥í•˜ì§€ ì•Šì•˜ì„ ê²½ìš°
 								if (args.length == 2) {
-									player.sendMessage(error + "¿£Æ¼Æ¼ ÀÌ¸§ÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù. ¿£Æ¼Æ¼ ¸ñ·ÏÀº list ·Î ¾Ë¾Æº¸½Ç ¼ö ÀÖ½À´Ï´Ù.");
+									player.sendMessage(error + "ì—”í‹°í‹° ì´ë¦„ì´ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤. ì—”í‹°í‹° ëª©ë¡ì€ list ë¡œ ì•Œì•„ë³´ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
 								}
-								// ÀÔ·ÂÇßÀ» °æ¿ì
+								// ì…ë ¥í–ˆì„ ê²½ìš°
 								else {
 
 								}
 							}
-							// GUI ¸¦ ÅëÇØ ¼ÒÈ¯
+							// GUI ë¥¼ í†µí•´ ì†Œí™˜
 							else if (args[1].equalsIgnoreCase("gui")) {
 
 							}
 						}
 					}
 
-					// Ä¿¸Çµå "/res nickname <String>"
+					// ì»¤ë§¨ë“œ "/res nickname <String>"
 					else if (args[0].equalsIgnoreCase("nickname")) {
-						// <String> ºÎºĞÀÌ ÀÔ·ÂµÇÁö ¾Ê¾ÒÀ» °æ¿ì
+						// <String> ë¶€ë¶„ì´ ì…ë ¥ë˜ì§€ ì•Šì•˜ì„ ê²½ìš°
 						if (args.length == 1) {
-							player.sendMessage(error + "º¯°æÇÒ ´Ğ³×ÀÓÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù. º¯°æÇÒ ´Ğ³×ÀÓÀ» Ä¿¸Çµå¿Í °°ÀÌ ÀÔ·ÂÇØ ÁÖ¼¼¿ä!");
+							player.sendMessage(error + "ë³€ê²½í•  ë‹‰ë„¤ì„ì´ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤. ë³€ê²½í•  ë‹‰ë„¤ì„ì„ ì»¤ë§¨ë“œì™€ ê°™ì´ ì…ë ¥í•´ ì£¼ì„¸ìš”!");
 						}
 
-						// <String> ºÎºĞÀ» ÀÔ·ÂÇßÀ» °æ¿ì
+						// <String> ë¶€ë¶„ì„ ì…ë ¥í–ˆì„ ê²½ìš°
 						else {
-							// ÇÃ·¹ÀÌ¾îÀÇ ¿ø·¡ ÀÌ¸§À» ÀúÀå
+							// í”Œë ˆì´ì–´ì˜ ì›ë˜ ì´ë¦„ì„ ì €ì¥
 							String realName = player.getName();
 
-							// <String> ºÎºĞÀÌ reset ÀÏ °æ¿ì
+							// <String> ë¶€ë¶„ì´ reset ì¼ ê²½ìš°
 							if (args[1].equals("reset")) {
-								// ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§À» ¿ø·¡´ë·Î º¯°æÇÏ°í ¾È³»¸Ş¼¼Áö Ãâ·Â
+								// í”Œë ˆì´ì–´ì˜ ì´ë¦„ì„ ì›ë˜ëŒ€ë¡œ ë³€ê²½í•˜ê³  ì•ˆë‚´ë©”ì„¸ì§€ ì¶œë ¥
 								player.setDisplayName(realName);
 								player.setPlayerListName(realName);
-								player.sendMessage(prefix + "ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§À» ¿ø·¡´ë·Î º¯°æÇÏ¿´½À´Ï´Ù.");
+								player.sendMessage(prefix + "í”Œë ˆì´ì–´ì˜ ì´ë¦„ì„ ì›ë˜ëŒ€ë¡œ ë³€ê²½í•˜ì˜€ìŠµë‹ˆë‹¤.");
 							}
 
-							// <String> ºÎºĞÀÌ reset ÀÌ ¾Æ´Ò °æ¿ì
+							// <String> ë¶€ë¶„ì´ reset ì´ ì•„ë‹ ê²½ìš°
 							else {
-								// ÇÃ·¹ÀÌ¾î°¡ ÀÔ·ÂÇÑ ¹®ÀÚ¿­À» ÇÃ·¹ÀÌ¾îÀÇ ´Ğ³×ÀÓÀ¸·Î ¼³Á¤ÇÏ°í ¾È³»¸Ş¼¼Áö Ãâ·Â
+								// í”Œë ˆì´ì–´ê°€ ì…ë ¥í•œ ë¬¸ìì—´ì„ í”Œë ˆì´ì–´ì˜ ë‹‰ë„¤ì„ìœ¼ë¡œ ì„¤ì •í•˜ê³  ì•ˆë‚´ë©”ì„¸ì§€ ì¶œë ¥
 								player.setDisplayName(args[1]);
 								player.setPlayerListName(args[1]);
-								player.sendMessage(prefix + "ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§ÀÌ " + yellow + realName + white + " ¿¡¼­ " + yellow
-										+ args[1] + white + " (À¸)·Î º¯°æµÇ¾ú½À´Ï´Ù.");
+								player.sendMessage(prefix + "í”Œë ˆì´ì–´ì˜ ì´ë¦„ì´ " + yellow + realName + white + " ì—ì„œ " + yellow
+										+ args[1] + white + " (ìœ¼)ë¡œ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.");
 							}
 						}
 					}
 
-					// Ä¿¸Çµå "/res nametag <String>" - ¸í·É¾î ºñÈ°¼ºÈ­
+					// ì»¤ë§¨ë“œ "/res nametag <String>" - ëª…ë ¹ì–´ ë¹„í™œì„±í™”
 					else if (args[0].equalsIgnoreCase("nametag")) {
-						player.sendMessage(error + "ÇöÀç °³¹ß Áß ¹®Á¦°¡ ¹ß»ıÇÏ¿© ºñÈ°¼ºÈ­ µÈ ¸í·É¾î ÀÔ´Ï´Ù. ´Ù¸¥ ¸í·É¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä!");
+						player.sendMessage(error + "í˜„ì¬ ê°œë°œ ì¤‘ ë¬¸ì œê°€ ë°œìƒí•˜ì—¬ ë¹„í™œì„±í™” ëœ ëª…ë ¹ì–´ ì…ë‹ˆë‹¤. ë‹¤ë¥¸ ëª…ë ¹ì–´ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”!");
 
-						// // <String> ºÎºĞÀÌ ÀÔ·ÂµÇÁö ¾Ê¾ÒÀ» °æ¿ì
+						// // <String> ë¶€ë¶„ì´ ì…ë ¥ë˜ì§€ ì•Šì•˜ì„ ê²½ìš°
 						// if (args.length == 1) {
-						// player.sendMessage(error + "º¯°æÇÒ ´Ğ³×ÀÓÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù. º¯°æÇÒ ´Ğ³×ÀÓÀ» Ä¿¸Çµå¿Í °°ÀÌ ÀÔ·ÂÇØ ÁÖ¼¼¿ä!");
+						// player.sendMessage(error + "ë³€ê²½í•  ë‹‰ë„¤ì„ì´ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤. ë³€ê²½í•  ë‹‰ë„¤ì„ì„ ì»¤ë§¨ë“œì™€ ê°™ì´ ì…ë ¥í•´ ì£¼ì„¸ìš”!");
 						// }
 						//
-						// // <String> ºÎºĞÀ» ÀÔ·ÂÇßÀ» °æ¿ì
+						// // <String> ë¶€ë¶„ì„ ì…ë ¥í–ˆì„ ê²½ìš°
 						// else {
 						// String realName = player.getName();
 						//
-						// // <String> ºÎºĞÀÌ reset ÀÏ °æ¿ì
+						// // <String> ë¶€ë¶„ì´ reset ì¼ ê²½ìš°
 						// if (args[1].equals("reset")) {
 						// player.setDisplayName(realName);
 						// player.setPlayerListName(realName);
@@ -266,7 +266,7 @@ public class MainCommand implements CommandExecutor {
 						// e.printStackTrace();
 						// }
 						//
-						// player.sendMessage(prefix + "ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§À» ¿ø·¡´ë·Î º¯°æÇÏ¿´½À´Ï´Ù.");
+						// player.sendMessage(prefix + "í”Œë ˆì´ì–´ì˜ ì´ë¦„ì„ ì›ë˜ëŒ€ë¡œ ë³€ê²½í•˜ì˜€ìŠµë‹ˆë‹¤.");
 						// }
 						//
 						// else {
@@ -291,158 +291,158 @@ public class MainCommand implements CommandExecutor {
 						// e.printStackTrace();
 						// }
 						//
-						// player.sendMessage(prefix + "ÇÃ·¹ÀÌ¾îÀÇ ÀÌ¸§ÀÌ " + yellow + realName + white + " ¿¡¼­ "
+						// player.sendMessage(prefix + "í”Œë ˆì´ì–´ì˜ ì´ë¦„ì´ " + yellow + realName + white + " ì—ì„œ "
 						// + yellow
-						// + args[1] + white + " (À¸)·Î º¯°æµÇ¾ú½À´Ï´Ù.");
+						// + args[1] + white + " (ìœ¼)ë¡œ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.");
 						// }
 						// }
 					}
 
-					// Ä¿¸Çµå "/res test <help/...>
+					// ì»¤ë§¨ë“œ "/res test <help/...>
 					else if (args[0].equalsIgnoreCase("test")) {
 						if (args.length == 1) {
-							player.sendMessage(error + "Ä¿¸Çµå°¡ Á¦´ë·Î ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù!" + yellow + " /res test help " + red
-									+ "¸¦ ÅëÇØ Å×½ºÆ® ÇÒ ¸ñ·ÏÀ» È®ÀÎÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+							player.sendMessage(error + "ì»¤ë§¨ë“œê°€ ì œëŒ€ë¡œ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤!" + yellow + " /res test help " + red
+									+ "ë¥¼ í†µí•´ í…ŒìŠ¤íŠ¸ í•  ëª©ë¡ì„ í™•ì¸í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
 						}
 
 						else {
-							// Å×½ºÆ® ¸ğµå µµ¿ò¸»
+							// í…ŒìŠ¤íŠ¸ ëª¨ë“œ ë„ì›€ë§
 							if (args[1].equalsIgnoreCase("help")) {
-								player.sendMessage(prefix + "¾ÆÁ÷ °³¹ß ÁßÀÎ ±â´ÉÀ» Å×½ºÆ® ÇÒ ¼ö ÀÖ´Â ¸ñ·Ï ÀÔ´Ï´Ù. /res test ¿Í °°ÀÌ »ç¿ëÇØ¾ß ÇÕ´Ï´Ù.");
+								player.sendMessage(prefix + "ì•„ì§ ê°œë°œ ì¤‘ì¸ ê¸°ëŠ¥ì„ í…ŒìŠ¤íŠ¸ í•  ìˆ˜ ìˆëŠ” ëª©ë¡ ì…ë‹ˆë‹¤. /res test ì™€ ê°™ì´ ì‚¬ìš©í•´ì•¼ í•©ë‹ˆë‹¤.");
 								player.sendMessage(
-										green + "=-=-=-=-=-=-=-=-=- Research ÇÃ·¯±×ÀÎ - Å×½ºÆ® ¸ñ·Ï =-=-=-=-=-=-=-=-=-");
-								player.sendMessage(green + "gui" + cleft + "»ı¼ºµÈ GUI ¸¦ Å×½ºÆ®ÇÕ´Ï´Ù. (GUI Ã¢ ½ÇÇà)");
+										green + "=-=-=-=-=-=-=-=-=- Research í”ŒëŸ¬ê·¸ì¸ - í…ŒìŠ¤íŠ¸ ëª©ë¡ =-=-=-=-=-=-=-=-=-");
+								player.sendMessage(green + "gui" + cleft + "ìƒì„±ëœ GUI ë¥¼ í…ŒìŠ¤íŠ¸í•©ë‹ˆë‹¤. (GUI ì°½ ì‹¤í–‰)");
 								player.sendMessage(
-										green + "cmd <cmds...>" + cleft + "GUI °°Àº ÀÌº¥Æ®°¡ ÀÛµ¿À» ÇÏÁö ¾ÊÀ» ¶§ Ä¿¸Çµå·Î Å×½ºÆ® ÇÕ´Ï´Ù.");
-								player.sendMessage(green + "exit" + cleft + "Å×½ºÆ®¸¦ ³¡³À´Ï´Ù.");
+										green + "cmd <cmds...>" + cleft + "GUI ê°™ì€ ì´ë²¤íŠ¸ê°€ ì‘ë™ì„ í•˜ì§€ ì•Šì„ ë•Œ ì»¤ë§¨ë“œë¡œ í…ŒìŠ¤íŠ¸ í•©ë‹ˆë‹¤.");
+								player.sendMessage(green + "exit" + cleft + "í…ŒìŠ¤íŠ¸ë¥¼ ëëƒ…ë‹ˆë‹¤.");
 								player.sendMessage(green
 										+ "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 							}
-							// GUI Å×½ºÆ® ¸ğµå
+							// GUI í…ŒìŠ¤íŠ¸ ëª¨ë“œ
 							else if (args[1].equalsIgnoreCase("gui")) {
 								isTest = true;
 								player.sendMessage(
-										prefix + "GUI Ã¢ Å×½ºÆ®¸¦ ½ÃÀÛÇÕ´Ï´Ù. Å×½ºÆ®¸¦ Á¾·áÇÏ½Ã·Á¸é GUI Ã¢ ¸ŞÀÎ È­¸é¿¡¼­ '³ª¹« ¹®' À» Å¬¸¯ÇÏ¼¼¿ä.");
+										prefix + "GUI ì°½ í…ŒìŠ¤íŠ¸ë¥¼ ì‹œì‘í•©ë‹ˆë‹¤. í…ŒìŠ¤íŠ¸ë¥¼ ì¢…ë£Œí•˜ì‹œë ¤ë©´ GUI ì°½ ë©”ì¸ í™”ë©´ì—ì„œ 'ë‚˜ë¬´ ë¬¸' ì„ í´ë¦­í•˜ì„¸ìš”.");
 								GUI_Test.openInv(player);
 							}
-							// ¸í·É¾î Å×½ºÆ® ¸ğµå
+							// ëª…ë ¹ì–´ í…ŒìŠ¤íŠ¸ ëª¨ë“œ
 							else if (args[1].equalsIgnoreCase("cmd")) {
 								if (args.length == 2) {
 									player.sendMessage(
-											green + "=-=-=-=-=-=-=-=- Research ÇÃ·¯±×ÀÎ - Å×½ºÆ® ¸ñ·Ï [¸í·É¾î] =-=-=-=-=-=-=-=-");
-									player.sendMessage(green + "±âº» ¸í·É¾î" + cleft + "¸í·É¾î¸¦ Å×½ºÆ® ÇÕ´Ï´Ù.");
-									player.sendMessage(green + "gui_test_main" + cleft + "GUI Å×½ºÆ® ¸ŞÀÎ È­¸éÀ» ½ÇÇàÇÕ´Ï´Ù.");
-									player.sendMessage(green + "gui_entity_main" + cleft + "¿£Æ¼Æ¼ ¼ÒÈ¯ GUI ¸ŞÀÎ È­¸éÀ» ½ÇÇàÇÕ´Ï´Ù.");
+											green + "=-=-=-=-=-=-=-=- Research í”ŒëŸ¬ê·¸ì¸ - í…ŒìŠ¤íŠ¸ ëª©ë¡ [ëª…ë ¹ì–´] =-=-=-=-=-=-=-=-");
+									player.sendMessage(green + "ê¸°ë³¸ ëª…ë ¹ì–´" + cleft + "ëª…ë ¹ì–´ë¥¼ í…ŒìŠ¤íŠ¸ í•©ë‹ˆë‹¤.");
+									player.sendMessage(green + "gui_test_main" + cleft + "GUI í…ŒìŠ¤íŠ¸ ë©”ì¸ í™”ë©´ì„ ì‹¤í–‰í•©ë‹ˆë‹¤.");
+									player.sendMessage(green + "gui_entity_main" + cleft + "ì—”í‹°í‹° ì†Œí™˜ GUI ë©”ì¸ í™”ë©´ì„ ì‹¤í–‰í•©ë‹ˆë‹¤.");
 									player.sendMessage(
-											green + "gui_entity_passive" + cleft + "¿£Æ¼Æ¼ ¼ÒÈ¯ GUI Ä£È­Àû ¸÷ È­¸éÀ» ½ÇÇàÇÕ´Ï´Ù.");
+											green + "gui_entity_passive" + cleft + "ì—”í‹°í‹° ì†Œí™˜ GUI ì¹œí™”ì  ëª¹ í™”ë©´ì„ ì‹¤í–‰í•©ë‹ˆë‹¤.");
 									player.sendMessage(green
 											+ "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 								} else {
-									// GUI ½ÇÇà ¸í·É¾î - GUI Å×½ºÆ®
+									// GUI ì‹¤í–‰ ëª…ë ¹ì–´ - GUI í…ŒìŠ¤íŠ¸
 									if (args[2].equalsIgnoreCase("gui_test_main")) {
 										GUI_Test.openInv(player);
 										player.sendMessage(prefix
-												+ "'Reseach ÇÃ·¯±×ÀÎ - GUI ±â´É Å×½ºÆ®' È­¸éÀ» ½ÇÇàÇÕ´Ï´Ù. ½ÇÇàÀÌ µÇÁö ¾ÊÀ» °æ¿ì ÄÜ¼Ö Ã¢À» È®ÀÎÇØ ÁÖ¼¼¿ä.");
+												+ "'Reseach í”ŒëŸ¬ê·¸ì¸ - GUI ê¸°ëŠ¥ í…ŒìŠ¤íŠ¸' í™”ë©´ì„ ì‹¤í–‰í•©ë‹ˆë‹¤. ì‹¤í–‰ì´ ë˜ì§€ ì•Šì„ ê²½ìš° ì½˜ì†” ì°½ì„ í™•ì¸í•´ ì£¼ì„¸ìš”.");
 									}
-									// GUI ½ÇÇà ¸í·É¾î - ¿£Æ¼Æ¼ ¼ÒÈ¯ ¼±ÅÃ È­¸é
+									// GUI ì‹¤í–‰ ëª…ë ¹ì–´ - ì—”í‹°í‹° ì†Œí™˜ ì„ íƒ í™”ë©´
 									else if (args[2].equalsIgnoreCase("gui_entity_main")) {
 										SE_GUI_Main.openInv(player);
 										player.sendMessage(
-												prefix + "'¿£Æ¼Æ¼¸¦ ¼±ÅÃÇÏ¼¼¿ä' È­¸éÀ» ½ÇÇàÇÕ´Ï´Ù. ½ÇÇàÀÌ µÇÁö ¾ÊÀ» °æ¿ì ÄÜ¼Ö Ã¢À» È®ÀÎÇØ ÁÖ¼¼¿ä.");
+												prefix + "'ì—”í‹°í‹°ë¥¼ ì„ íƒí•˜ì„¸ìš”' í™”ë©´ì„ ì‹¤í–‰í•©ë‹ˆë‹¤. ì‹¤í–‰ì´ ë˜ì§€ ì•Šì„ ê²½ìš° ì½˜ì†” ì°½ì„ í™•ì¸í•´ ì£¼ì„¸ìš”.");
 									}
-									// GUI ½ÇÇà ¸í·É¾î - ¿£Æ¼Æ¼ ¼ÒÈ¯ ¼±ÅÃ È­¸é _ Ä£È­Àû ¸÷
+									// GUI ì‹¤í–‰ ëª…ë ¹ì–´ - ì—”í‹°í‹° ì†Œí™˜ ì„ íƒ í™”ë©´ _ ì¹œí™”ì  ëª¹
 									else if (args[2].equalsIgnoreCase("gui_entity_passive")) {
 										SE_GUI_Passive.openInv(player);
 										player.sendMessage(
-												prefix + "'¿£Æ¼Æ¼¸¦ ¼±ÅÃÇÏ¼¼¿ä - Ä£È­Àû ¸÷' È­¸éÀ» ½ÇÇàÇÕ´Ï´Ù. ½ÇÇàÀÌ µÇÁö ¾ÊÀ» °æ¿ì ÄÜ¼Ö Ã¢À» È®ÀÎÇØ ÁÖ¼¼¿ä.");
+												prefix + "'ì—”í‹°í‹°ë¥¼ ì„ íƒí•˜ì„¸ìš” - ì¹œí™”ì  ëª¹' í™”ë©´ì„ ì‹¤í–‰í•©ë‹ˆë‹¤. ì‹¤í–‰ì´ ë˜ì§€ ì•Šì„ ê²½ìš° ì½˜ì†” ì°½ì„ í™•ì¸í•´ ì£¼ì„¸ìš”.");
 									}
-									// ¾Ë ¼ö ¾ø´Â Å×½ºÆ®
+									// ì•Œ ìˆ˜ ì—†ëŠ” í…ŒìŠ¤íŠ¸
 									else {
-										player.sendMessage(error + "¾Ë ¼ö ¾ø´Â Å×½ºÆ® ÀÌ¸§ ÀÔ´Ï´Ù. " + yellow + "/res test cmd"
-												+ red + " ¸¦ ÀÔ·ÂÇØ È®ÀÎÇØ º¸¼¼¿ä.");
+										player.sendMessage(error + "ì•Œ ìˆ˜ ì—†ëŠ” í…ŒìŠ¤íŠ¸ ì´ë¦„ ì…ë‹ˆë‹¤. " + yellow + "/res test cmd"
+												+ red + " ë¥¼ ì…ë ¥í•´ í™•ì¸í•´ ë³´ì„¸ìš”.");
 									}
 								}
 							}
 						}
 					}
 
-					// Ä¿¸Çµå "/res debug <on/off>"
+					// ì»¤ë§¨ë“œ "/res debug <on/off>"
 					else if (args[0].equalsIgnoreCase("debug")) {
 						if (args.length == 1) {
 							player.sendMessage(
-									error + "µğ¹ö±× ¸ğµå´Â " + yellow + "/res debug <on/off>" + red + " ·Î ¸¸ °¡´ÉÇÕ´Ï´Ù.");
-							player.sendMessage(error + "ÇöÀç µğ¹ö±× ¸ğµå »óÅÂ´Â " + green + "'" + isDebug + "'" + red + " ÀÔ´Ï´Ù.");
+									error + "ë””ë²„ê·¸ ëª¨ë“œëŠ” " + yellow + "/res debug <on/off>" + red + " ë¡œ ë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+							player.sendMessage(error + "í˜„ì¬ ë””ë²„ê·¸ ëª¨ë“œ ìƒíƒœëŠ” " + green + "'" + isDebug + "'" + red + " ì…ë‹ˆë‹¤.");
 						} else {
-							// µğ¹ö±× ¸ğµå È°¼ºÈ­
+							// ë””ë²„ê·¸ ëª¨ë“œ í™œì„±í™”
 							if (args[1].equalsIgnoreCase("on")) {
-								// ÀÌ¹Ì µğ¹ö±× ¸ğµå°¡ È°¼ºÈ­ µÇ¾î ÀÖ´Â °æ¿ì ¿¡·¯ ¸Ş¼¼Áö Ãâ·Â
+								// ì´ë¯¸ ë””ë²„ê·¸ ëª¨ë“œê°€ í™œì„±í™” ë˜ì–´ ìˆëŠ” ê²½ìš° ì—ëŸ¬ ë©”ì„¸ì§€ ì¶œë ¥
 								if (isDebug == true) {
-									player.sendMessage(error + "ÀÌ¹Ì µğ¹ö±× ¸ğµå°¡ È°¼ºÈ­ µÈ »óÅÂÀÔ´Ï´Ù. µğ¹ö±× ¸ğµå Á¾·á´Â " + yellow + "off"
-											+ red + " ·Î ÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+									player.sendMessage(error + "ì´ë¯¸ ë””ë²„ê·¸ ëª¨ë“œê°€ í™œì„±í™” ëœ ìƒíƒœì…ë‹ˆë‹¤. ë””ë²„ê·¸ ëª¨ë“œ ì¢…ë£ŒëŠ” " + yellow + "off"
+											+ red + " ë¡œ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
 								}
-								// µğ¹ö±× ¸ğµå È°¼ºÈ­
+								// ë””ë²„ê·¸ ëª¨ë“œ í™œì„±í™”
 								else {
 									isDebug = true;
-									player.sendMessage(prefix + "µğ¹ö±× ¸ğµå°¡ È°¼ºÈ­ µÇ¾ú½À´Ï´Ù. ÇÃ·¯±×ÀÎ¿¡¼­ ¹ß»ıÇÏ´Â ¸ğµç ÀÌº¥Æ®°¡ Ã¤ÆÃÃ¢À¸·Î Ãâ·ÂµË´Ï´Ù.");
+									player.sendMessage(prefix + "ë””ë²„ê·¸ ëª¨ë“œê°€ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤. í”ŒëŸ¬ê·¸ì¸ì—ì„œ ë°œìƒí•˜ëŠ” ëª¨ë“  ì´ë²¤íŠ¸ê°€ ì±„íŒ…ì°½ìœ¼ë¡œ ì¶œë ¥ë©ë‹ˆë‹¤.");
 								}
 
 							} else if (args[1].equalsIgnoreCase("off")) {
-								// ÀÌ¹Ì µğ¹ö±× ¸ğµå°¡ ºñÈ°¼ºÈ­ µÇ¾î ÀÖ´Â °æ¿ì ¿¡·¯ ¸Ş¼¼Áö Ãâ·Â
+								// ì´ë¯¸ ë””ë²„ê·¸ ëª¨ë“œê°€ ë¹„í™œì„±í™” ë˜ì–´ ìˆëŠ” ê²½ìš° ì—ëŸ¬ ë©”ì„¸ì§€ ì¶œë ¥
 								if (isDebug == false) {
-									player.sendMessage(error + "ÀÌ¹Ì µğ¹ö±× ¸ğµå°¡ ºñÈ°¼ºÈ­ µÈ »óÅÂÀÔ´Ï´Ù. µğ¹ö±× ¸ğµå È°¼ºÈ­´Â " + yellow + "on"
-											+ red + " À¸·Î ÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+									player.sendMessage(error + "ì´ë¯¸ ë””ë²„ê·¸ ëª¨ë“œê°€ ë¹„í™œì„±í™” ëœ ìƒíƒœì…ë‹ˆë‹¤. ë””ë²„ê·¸ ëª¨ë“œ í™œì„±í™”ëŠ” " + yellow + "on"
+											+ red + " ìœ¼ë¡œ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
 								}
-								// µğ¹ö±× ¸ğµå ºñÈ°¼ºÈ­
+								// ë””ë²„ê·¸ ëª¨ë“œ ë¹„í™œì„±í™”
 								else {
 									isDebug = false;
-									player.sendMessage(prefix + "µğ¹ö±× ¸ğµå°¡ ºñÈ°¼ºÈ­ µÇ¾ú½À´Ï´Ù. ÇÃ·¯±×ÀÎ¿¡¼­ ¹ß»ıÇÏ´Â ÀÏºÎ ÀÌº¥Æ®¸¸ Ã¤ÆÃÃ¢À¸·Î Ãâ·ÂµË´Ï´Ù.");
+									player.sendMessage(prefix + "ë””ë²„ê·¸ ëª¨ë“œê°€ ë¹„í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤. í”ŒëŸ¬ê·¸ì¸ì—ì„œ ë°œìƒí•˜ëŠ” ì¼ë¶€ ì´ë²¤íŠ¸ë§Œ ì±„íŒ…ì°½ìœ¼ë¡œ ì¶œë ¥ë©ë‹ˆë‹¤.");
 								}
 							} else {
 								player.sendMessage(
-										error + "µğ¹ö±× ¸ğµå´Â " + yellow + "/res debug <on/off>" + red + " ·Î ¸¸ °¡´ÉÇÕ´Ï´Ù.");
+										error + "ë””ë²„ê·¸ ëª¨ë“œëŠ” " + yellow + "/res debug <on/off>" + red + " ë¡œ ë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 							}
 						}
 					}
 
-					// Ä¿¸Çµå "/res event <enable/disable> <class>"
+					// ì»¤ë§¨ë“œ "/res event <enable/disable> <class>"
 					else if (args[0].equalsIgnoreCase("event")) {
-						// Ãß°¡ ¸í·É¾î ÀÔ·Â ¾È³»
+						// ì¶”ê°€ ëª…ë ¹ì–´ ì…ë ¥ ì•ˆë‚´
 						if (args.length == 1) {
-							player.sendMessage(error + "ÀÌº¥Æ® È°¼ºÈ­ »óÅÂ °ü¸® ¸í·É¾î´Â ¾Æ·¡¿Í °°Àº ¸í·É¾î·Î ÀÌ¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.");
+							player.sendMessage(error + "ì´ë²¤íŠ¸ í™œì„±í™” ìƒíƒœ ê´€ë¦¬ ëª…ë ¹ì–´ëŠ” ì•„ë˜ì™€ ê°™ì€ ëª…ë ¹ì–´ë¡œ ì´ìš©í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
 							player.sendMessage(error + yellow + "/res event <enable/disable/show [class]> <class>");
 						} else {
-							// ÀÌº¥Æ® È°¼ºÈ­
+							// ì´ë²¤íŠ¸ í™œì„±í™”
 							if (args[1].equalsIgnoreCase("enable")) {
 								if (args.length == 2) {
 									player.sendMessage(
-											error + "ÀÌº¥Æ® È°¼ºÈ­ °ü¸® ¸í·É¾î¸¦ »ç¿ëÇÏ±â À§ÇØ¼­´Â Å¬·¡½º ÀÌ¸§ÀÌ ÇÊ¿äÇÕ´Ï´Ù. Å¬·¡½º ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+											error + "ì´ë²¤íŠ¸ í™œì„±í™” ê´€ë¦¬ ëª…ë ¹ì–´ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œëŠ” í´ë˜ìŠ¤ ì´ë¦„ì´ í•„ìš”í•©ë‹ˆë‹¤. í´ë˜ìŠ¤ ì´ë¦„ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
 								} else {
 									if (args[2].equalsIgnoreCase("Event_PlayerJoin")) {
 										if (res_main.getConfig()
 												.getBoolean("auto-register.events.Event_PlayerJoin.enabled") == true) {
-											player.sendMessage(error + "ÀÌ¹Ì È°¼ºÈ­µÈ ÀÌº¥Æ®ÀÌ±â ¶§¹®¿¡ ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+											player.sendMessage(error + "ì´ë¯¸ í™œì„±í™”ëœ ì´ë²¤íŠ¸ì´ê¸° ë•Œë¬¸ì— ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 										} else {
 											try {
 												pm.registerEvents(new Event_PlayerJoin(res_main), res_main);
 												res_main.notice(
-														"ÇÃ·¹ÀÌ¾î " + yellow + player.getName() + white + " ¿¡ ÀÇÇØ ÀÌº¥Æ®"
+														"í”Œë ˆì´ì–´ " + yellow + player.getName() + white + " ì— ì˜í•´ ì´ë²¤íŠ¸"
 																+ green + " 'PlayerJoinEvent (Event_PlayerJoin.java)' "
-																+ white + "(ÀÌ)°¡ È°¼ºÈ­ µÇ¾ú½À´Ï´Ù.");
+																+ white + "(ì´)ê°€ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.");
 												res_main.getConfig()
 														.set("auto-register.events.Event_PlayerJoin.enabled", true);
 												try {
 													res_main.saveConfig();
-													res_main.console(debug + "config.yml ÆÄÀÏÀÇ º¯°æ»çÇ×ÀÌ ÀúÀåµÇ¾ú½À´Ï´Ù.");
+													res_main.console(debug + "config.yml íŒŒì¼ì˜ ë³€ê²½ì‚¬í•­ì´ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 												} catch (Exception e) {
 													e.printStackTrace();
-													res_main.console(error + "config.yml ÆÄÀÏÀÇ º¯°æ»çÇ×À» ÀúÀåÇÏ´Â µ¿¾È ¹®Á¦°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù. È®ÀÎÇØ ÁÖ¼¼¿ä.");
+													res_main.console(error + "config.yml íŒŒì¼ì˜ ë³€ê²½ì‚¬í•­ì„ ì €ì¥í•˜ëŠ” ë™ì•ˆ ë¬¸ì œê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤. í™•ì¸í•´ ì£¼ì„¸ìš”.");
 												}
 											} catch (Exception e) {
 												e.printStackTrace();
-												res_main.notice("ÇÃ·¹ÀÌ¾î " + yellow + player.getName() + white
-														+ " (ÀÌ)°¡ ÀÌº¥Æ®" + green
+												res_main.notice("í”Œë ˆì´ì–´ " + yellow + player.getName() + white
+														+ " (ì´)ê°€ ì´ë²¤íŠ¸" + green
 														+ " 'PlayerJoinEvent (Event_PlayerJoin.java)' " + white
-														+ " (À»)¸¦ È°¼ºÈ­ ½ÃÅ°·Á ÇßÁö¸¸," + " ¿¹¿Ü°¡ ¹ß»ıÇÏ¿© ½ÇÇàÇÏÁö ¸øÇß½À´Ï´Ù.");
+														+ " (ì„)ë¥¼ í™œì„±í™” ì‹œí‚¤ë ¤ í–ˆì§€ë§Œ," + " ì˜ˆì™¸ê°€ ë°œìƒí•˜ì—¬ ì‹¤í–‰í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 											}
 										}
 									}
@@ -450,7 +450,7 @@ public class MainCommand implements CommandExecutor {
 									else if (args[2].equalsIgnoreCase("Event_GUI_Test")) {
 										if (res_main.getConfig()
 												.getBoolean("auto-register.events.Event_GUI_Test.enabled") == true) {
-											player.sendMessage(error + "ÀÌ¹Ì È°¼ºÈ­µÈ ÀÌº¥Æ®ÀÌ±â ¶§¹®¿¡ ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+											player.sendMessage(error + "ì´ë¯¸ í™œì„±í™”ëœ ì´ë²¤íŠ¸ì´ê¸° ë•Œë¬¸ì— ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 										} else {
 
 										}
@@ -459,30 +459,30 @@ public class MainCommand implements CommandExecutor {
 									else if (args[2].equalsIgnoreCase("Event_EntityDamagedByEntity")) {
 										if (res_main.getConfig().getBoolean(
 												"auto-register.events.Event_EntityDamagedByEntity.enabled") == true) {
-											player.sendMessage(error + "ÀÌ¹Ì È°¼ºÈ­µÈ ÀÌº¥Æ®ÀÌ±â ¶§¹®¿¡ ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+											player.sendMessage(error + "ì´ë¯¸ í™œì„±í™”ëœ ì´ë²¤íŠ¸ì´ê¸° ë•Œë¬¸ì— ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 										} else {
 											try {
 												pm.registerEvents(new Event_EntityDamagedByEntity(res_main), res_main);
-												res_main.notice("ÇÃ·¹ÀÌ¾î " + yellow + player.getName() + white
-														+ " ¿¡ ÀÇÇØ ÀÌº¥Æ®" + green
+												res_main.notice("í”Œë ˆì´ì–´ " + yellow + player.getName() + white
+														+ " ì— ì˜í•´ ì´ë²¤íŠ¸" + green
 														+ " 'EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java)' "
-														+ white + "(ÀÌ)°¡ È°¼ºÈ­ µÇ¾ú½À´Ï´Ù.");
+														+ white + "(ì´)ê°€ í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.");
 												res_main.getConfig().set(
 														"auto-register.events.Event_EntityDamagedByEntity.enabled",
 														true);
 												try {
 													res_main.saveConfig();
-													res_main.console(debug + "config.yml ÆÄÀÏÀÇ º¯°æ»çÇ×ÀÌ ÀúÀåµÇ¾ú½À´Ï´Ù.");
+													res_main.console(debug + "config.yml íŒŒì¼ì˜ ë³€ê²½ì‚¬í•­ì´ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 												} catch (Exception e) {
 													e.printStackTrace();
-													res_main.console(error + "config.yml ÆÄÀÏÀÇ º¯°æ»çÇ×À» ÀúÀåÇÏ´Â µ¿¾È ¹®Á¦°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù. È®ÀÎÇØ ÁÖ¼¼¿ä.");
+													res_main.console(error + "config.yml íŒŒì¼ì˜ ë³€ê²½ì‚¬í•­ì„ ì €ì¥í•˜ëŠ” ë™ì•ˆ ë¬¸ì œê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤. í™•ì¸í•´ ì£¼ì„¸ìš”.");
 												}
 											} catch (Exception e) {
 												e.printStackTrace();
-												res_main.notice("ÇÃ·¹ÀÌ¾î " + yellow + player.getName() + white
-														+ " (ÀÌ)°¡ ÀÌº¥Æ®" + green
+												res_main.notice("í”Œë ˆì´ì–´ " + yellow + player.getName() + white
+														+ " (ì´)ê°€ ì´ë²¤íŠ¸" + green
 														+ " 'EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java)' "
-														+ white + " (À»)¸¦ È°¼ºÈ­ ½ÃÅ°·Á ÇßÁö¸¸, ¿¹¿Ü°¡ ¹ß»ıÇÏ¿© ½ÇÇàÇÏÁö ¸øÇß½À´Ï´Ù.");
+														+ white + " (ì„)ë¥¼ í™œì„±í™” ì‹œí‚¤ë ¤ í–ˆì§€ë§Œ, ì˜ˆì™¸ê°€ ë°œìƒí•˜ì—¬ ì‹¤í–‰í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 											}
 										}
 									}
@@ -490,7 +490,7 @@ public class MainCommand implements CommandExecutor {
 									else if (args[2].equalsIgnoreCase("SE_Event_Main")) {
 										if (res_main.getConfig()
 												.getBoolean("auto-register.events.SE_Event_Main.enabled") == true) {
-											player.sendMessage(error + "ÀÌ¹Ì È°¼ºÈ­µÈ ÀÌº¥Æ®ÀÌ±â ¶§¹®¿¡ ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+											player.sendMessage(error + "ì´ë¯¸ í™œì„±í™”ëœ ì´ë²¤íŠ¸ì´ê¸° ë•Œë¬¸ì— ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 										} else {
 
 										}
@@ -499,28 +499,28 @@ public class MainCommand implements CommandExecutor {
 									else if (args[2].equalsIgnoreCase("SE_Event_Passive")) {
 										if (res_main.getConfig()
 												.getBoolean("auto-register.events.SE_Event_Passive.enabled") == true) {
-											player.sendMessage(error + "ÀÌ¹Ì È°¼ºÈ­µÈ ÀÌº¥Æ®ÀÌ±â ¶§¹®¿¡ ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+											player.sendMessage(error + "ì´ë¯¸ í™œì„±í™”ëœ ì´ë²¤íŠ¸ì´ê¸° ë•Œë¬¸ì— ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 										} else {
 
 										}
 									}
 
 									else {
-										player.sendMessage(error + "Àß¸øµÈ Å¬·¡½º ÀÌ¸§ÀÔ´Ï´Ù. Å¬·¡½º ÀÌ¸§À» È®ÀÎÇÑ ÈÄ ´Ù½Ã ½ÃµµÇÏ¼¼¿ä!");
+										player.sendMessage(error + "ì˜ëª»ëœ í´ë˜ìŠ¤ ì´ë¦„ì…ë‹ˆë‹¤. í´ë˜ìŠ¤ ì´ë¦„ì„ í™•ì¸í•œ í›„ ë‹¤ì‹œ ì‹œë„í•˜ì„¸ìš”!");
 									}
 								}
 							}
 
-							// ÀÌº¥Æ® ºñÈ°¼ºÈ­
+							// ì´ë²¤íŠ¸ ë¹„í™œì„±í™”
 							else if (args[1].equalsIgnoreCase("disable")) {
 								if (args.length == 2) {
 									player.sendMessage(
-											error + "ÀÌº¥Æ® È°¼ºÈ­ °ü¸® ¸í·É¾î¸¦ »ç¿ëÇÏ±â À§ÇØ¼­´Â Å¬·¡½º ÀÌ¸§ÀÌ ÇÊ¿äÇÕ´Ï´Ù. Å¬·¡½º ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+											error + "ì´ë²¤íŠ¸ í™œì„±í™” ê´€ë¦¬ ëª…ë ¹ì–´ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œëŠ” í´ë˜ìŠ¤ ì´ë¦„ì´ í•„ìš”í•©ë‹ˆë‹¤. í´ë˜ìŠ¤ ì´ë¦„ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
 								} else {
 									if (args[2].equalsIgnoreCase("Event_PlayerJoin")) {
 										if (res_main.getConfig()
 												.getBoolean("auto-register.events.Event_PlayerJoin.enabled") == false) {
-											player.sendMessage(error + "ÀÌ¹Ì ºñÈ°¼ºÈ­µÈ ÀÌº¥Æ®ÀÌ±â ¶§¹®¿¡ ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+											player.sendMessage(error + "ì´ë¯¸ ë¹„í™œì„±í™”ëœ ì´ë²¤íŠ¸ì´ê¸° ë•Œë¬¸ì— ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 										} else {
 
 										}
@@ -529,7 +529,7 @@ public class MainCommand implements CommandExecutor {
 									else if (args[2].equalsIgnoreCase("Event_GUI_Test")) {
 										if (res_main.getConfig()
 												.getBoolean("auto-register.events.Event_GUI_Test.enabled") == false) {
-											player.sendMessage(error + "ÀÌ¹Ì ºñÈ°¼ºÈ­µÈ ÀÌº¥Æ®ÀÌ±â ¶§¹®¿¡ ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+											player.sendMessage(error + "ì´ë¯¸ ë¹„í™œì„±í™”ëœ ì´ë²¤íŠ¸ì´ê¸° ë•Œë¬¸ì— ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 										} else {
 
 										}
@@ -538,29 +538,29 @@ public class MainCommand implements CommandExecutor {
 									else if (args[2].equalsIgnoreCase("Event_EntityDamagedByEntity")) {
 										if (res_main.getConfig().getBoolean(
 												"auto-register.events.Event_EntityDamagedByEntity.enabled") == false) {
-											player.sendMessage(error + "ÀÌ¹Ì ºñÈ°¼ºÈ­µÈ ÀÌº¥Æ®ÀÌ±â ¶§¹®¿¡ ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+											player.sendMessage(error + "ì´ë¯¸ ë¹„í™œì„±í™”ëœ ì´ë²¤íŠ¸ì´ê¸° ë•Œë¬¸ì— ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 										} else {
 											try {
-												res_main.notice("ÇÃ·¹ÀÌ¾î " + yellow + player.getName() + white
-														+ " ¿¡ ÀÇÇØ ÀÌº¥Æ®" + green
+												res_main.notice("í”Œë ˆì´ì–´ " + yellow + player.getName() + white
+														+ " ì— ì˜í•´ ì´ë²¤íŠ¸" + green
 														+ " 'EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java)' " + white
-														+ "(ÀÌ)°¡ ºñÈ°¼ºÈ­ µÇ¾ú½À´Ï´Ù.");
+														+ "(ì´)ê°€ ë¹„í™œì„±í™” ë˜ì—ˆìŠµë‹ˆë‹¤.");
 												res_main.getConfig()
 														.set("auto-register.events.Event_EntityDamagedByEntity.enabled", false);
 												
 												try {
 													res_main.saveConfig();
-													res_main.console(debug + "config.yml ÆÄÀÏÀÇ º¯°æ»çÇ×ÀÌ ÀúÀåµÇ¾ú½À´Ï´Ù.");
+													res_main.console(debug + "config.yml íŒŒì¼ì˜ ë³€ê²½ì‚¬í•­ì´ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 												} catch (Exception e) {
 													e.printStackTrace();
-													res_main.console(error + "config.yml ÆÄÀÏÀÇ º¯°æ»çÇ×À» ÀúÀåÇÏ´Â µ¿¾È ¹®Á¦°¡ ¹ß»ıÇÏ¿´½À´Ï´Ù. È®ÀÎÇØ ÁÖ¼¼¿ä.");
+													res_main.console(error + "config.yml íŒŒì¼ì˜ ë³€ê²½ì‚¬í•­ì„ ì €ì¥í•˜ëŠ” ë™ì•ˆ ë¬¸ì œê°€ ë°œìƒí•˜ì˜€ìŠµë‹ˆë‹¤. í™•ì¸í•´ ì£¼ì„¸ìš”.");
 												}
 											} catch (Exception e) {
 												e.printStackTrace();
-												res_main.notice("ÇÃ·¹ÀÌ¾î " + yellow + player.getName() + white
-														+ " (ÀÌ)°¡ ÀÌº¥Æ®" + green
+												res_main.notice("í”Œë ˆì´ì–´ " + yellow + player.getName() + white
+														+ " (ì´)ê°€ ì´ë²¤íŠ¸" + green
 														+ " 'EntityDamagedByEntityEvent (Event_EntityDamagedByEntity.java)' " + white
-														+ " (À»)¸¦ ºñÈ°¼ºÈ­ ½ÃÅ°·Á ÇßÁö¸¸, ¿¹¿Ü°¡ ¹ß»ıÇÏ¿© ½ÇÇàÇÏÁö ¸øÇß½À´Ï´Ù.");
+														+ " (ì„)ë¥¼ ë¹„í™œì„±í™” ì‹œí‚¤ë ¤ í–ˆì§€ë§Œ, ì˜ˆì™¸ê°€ ë°œìƒí•˜ì—¬ ì‹¤í–‰í•˜ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
 											}
 										}
 									}
@@ -568,7 +568,7 @@ public class MainCommand implements CommandExecutor {
 									else if (args[2].equalsIgnoreCase("SE_Event_Main")) {
 										if (res_main.getConfig()
 												.getBoolean("auto-register.events.SE_Event_Main.enabled") == false) {
-											player.sendMessage(error + "ÀÌ¹Ì ºñÈ°¼ºÈ­µÈ ÀÌº¥Æ®ÀÌ±â ¶§¹®¿¡ ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+											player.sendMessage(error + "ì´ë¯¸ ë¹„í™œì„±í™”ëœ ì´ë²¤íŠ¸ì´ê¸° ë•Œë¬¸ì— ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 										} else {
 
 										}
@@ -577,23 +577,23 @@ public class MainCommand implements CommandExecutor {
 									else if (args[2].equalsIgnoreCase("SE_Event_Passive")) {
 										if (res_main.getConfig()
 												.getBoolean("auto-register.events.SE_Event_Passive.enabled") == false) {
-											player.sendMessage(error + "ÀÌ¹Ì ºñÈ°¼ºÈ­µÈ ÀÌº¥Æ®ÀÌ±â ¶§¹®¿¡ ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ¾ø½À´Ï´Ù.");
+											player.sendMessage(error + "ì´ë¯¸ ë¹„í™œì„±í™”ëœ ì´ë²¤íŠ¸ì´ê¸° ë•Œë¬¸ì— ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 										} else {
 
 										}
 									}
 
 									else {
-										player.sendMessage(error + "Àß¸øµÈ Å¬·¡½º ÀÌ¸§ÀÔ´Ï´Ù. Å¬·¡½º ÀÌ¸§À» È®ÀÎÇÑ ÈÄ ´Ù½Ã ½ÃµµÇÏ¼¼¿ä!");
+										player.sendMessage(error + "ì˜ëª»ëœ í´ë˜ìŠ¤ ì´ë¦„ì…ë‹ˆë‹¤. í´ë˜ìŠ¤ ì´ë¦„ì„ í™•ì¸í•œ í›„ ë‹¤ì‹œ ì‹œë„í•˜ì„¸ìš”!");
 									}
 								}
 							}
 							
 							else if (args[1].equalsIgnoreCase("show")) {
-								player.sendMessage(prefix + "ÇöÀç ÀÌº¥Æ®µéÀÇ Á¤º¸¸¦ ¼öÁıÇÏ¿© ÇöÀç ÀÛµ¿ ÁßÀÎÁö ¾Æ´ÑÁö, config.yml ¿¡ ¾î¶»°Ô µî·ÏµÇ¾î ÀÖ´ÂÁö Ãâ·ÂÇÕ´Ï´Ù.");
-								player.sendMessage(green + "=-=-=-=-=-=-=-=-=-=-= Research ÇÃ·¯±×ÀÎ - ÀÌº¥Æ® ºä¾î =-=-=-=-=-=-=-=-=-=-=");
-								player.sendMessage(green + "[ ÀÌº¥Æ® ºä¾î º¸´Â ¹ı > " + yellow + "config.yml È°¼ºÈ­ »óÅÂ" + green + " | "
-										+ aqua + "config.yml ÀÚµ¿ ½ÇÇà »óÅÂ " + green + "]");
+								player.sendMessage(prefix + "í˜„ì¬ ì´ë²¤íŠ¸ë“¤ì˜ ì •ë³´ë¥¼ ìˆ˜ì§‘í•˜ì—¬ í˜„ì¬ ì‘ë™ ì¤‘ì¸ì§€ ì•„ë‹Œì§€, config.yml ì— ì–´ë–»ê²Œ ë“±ë¡ë˜ì–´ ìˆëŠ”ì§€ ì¶œë ¥í•©ë‹ˆë‹¤.");
+								player.sendMessage(green + "=-=-=-=-=-=-=-=-=-=-= Research í”ŒëŸ¬ê·¸ì¸ - ì´ë²¤íŠ¸ ë·°ì–´ =-=-=-=-=-=-=-=-=-=-=");
+								player.sendMessage(green + "[ ì´ë²¤íŠ¸ ë·°ì–´ ë³´ëŠ” ë²• > " + yellow + "config.yml í™œì„±í™” ìƒíƒœ" + green + " | "
+										+ aqua + "config.yml ìë™ ì‹¤í–‰ ìƒíƒœ " + green + "]");
 								player.sendMessage(green + "Event_PlayerJoin: "
 										+ yellow + res_main.getConfig().getBoolean("auto-register.events.Event_PlayerJoin.enabled") + vleft
 										+ res_main.getConfig().getBoolean("auto-register.events.Event_PlayerJoin.uses"));
@@ -612,23 +612,23 @@ public class MainCommand implements CommandExecutor {
 								player.sendMessage(green + "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 							}
 
-							// Àß¸øµÈ ¸í·É¾î ÀÔ·Â
+							// ì˜ëª»ëœ ëª…ë ¹ì–´ ì…ë ¥
 							else {
-								player.sendMessage(error + "ÀÔ·ÂµÈ ¸í·É¾î Áß Àß¸øµÈ ¸í·É¾î°¡ ÀÖ½À´Ï´Ù. ¾Æ·¡ÀÇ ¸í·É¾î¸¦ Âü°íÇØ ÁÖ¼¼¿ä.");
+								player.sendMessage(error + "ì…ë ¥ëœ ëª…ë ¹ì–´ ì¤‘ ì˜ëª»ëœ ëª…ë ¹ì–´ê°€ ìˆìŠµë‹ˆë‹¤. ì•„ë˜ì˜ ëª…ë ¹ì–´ë¥¼ ì°¸ê³ í•´ ì£¼ì„¸ìš”.");
 								player.sendMessage(error + yellow + "/res event <enable/disable/show [class]> <class>");
 							}
 						}
 					}
 
-					// Ä¿¸Çµå "/res info"
+					// ì»¤ë§¨ë“œ "/res info"
 					else if (args[0].equalsIgnoreCase("info")) {
-						player.sendMessage(prefix + "Research ÇÃ·¯±×ÀÎÀÇ Á¤º¸¸¦ Ç¥½ÃÇÕ´Ï´Ù.");
+						player.sendMessage(prefix + "Research í”ŒëŸ¬ê·¸ì¸ì˜ ì •ë³´ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤.");
 						player.sendMessage(
-								green + "=-=-=-=-=-=-=-=-=-=-=-=-= Research ÇÃ·¯±×ÀÎ Á¤º¸ =-=-=-=-=-=-=-=-=-=-=-=-=");
-						player.sendMessage(green + "- ÀÌ¸§: " + yellow + res_main.pname);
-						player.sendMessage(green + "- ¹öÀü: " + yellow + res_main.pver + " (" + res_main.rel_type + ")");
-						player.sendMessage(green + "- ºôµå: " + yellow + res_main.build_no);
-						player.sendMessage(green + "- Á¦ÀÛ: " + yellow + res_main.pauth);
+								green + "=-=-=-=-=-=-=-=-=-=-=-=-= Research í”ŒëŸ¬ê·¸ì¸ ì •ë³´ =-=-=-=-=-=-=-=-=-=-=-=-=");
+						player.sendMessage(green + "- ì´ë¦„: " + yellow + res_main.pname);
+						player.sendMessage(green + "- ë²„ì „: " + yellow + res_main.pver + " (" + res_main.rel_type + ")");
+						player.sendMessage(green + "- ë¹Œë“œ: " + yellow + res_main.build_no);
+						player.sendMessage(green + "- ì œì‘: " + yellow + res_main.pauth);
 						player.sendMessage(yellow + "Copyright (C) stageroad0820. All rights reserved.");
 						player.sendMessage(
 								green + "=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
@@ -637,39 +637,39 @@ public class MainCommand implements CommandExecutor {
 			}
 		}
 
-		// ¸í·É¾î Àü¼ÛÀÚ°¡ "ÄÜ¼Ö Ä¿¸Çµå Àü¼ÛÀÚ" ÀÏ °æ¿ì
+		// ëª…ë ¹ì–´ ì „ì†¡ìê°€ "ì½˜ì†” ì»¤ë§¨ë“œ ì „ì†¡ì" ì¼ ê²½ìš°
 		else if (sender instanceof ConsoleCommandSender) {
-			// Ä¿¸Çµå¸¦ "/research" ¿Í "/res" ·Î »ç¿ë °¡´ÉÇÏ°Ô ¼³Á¤
+			// ì»¤ë§¨ë“œë¥¼ "/research" ì™€ "/res" ë¡œ ì‚¬ìš© ê°€ëŠ¥í•˜ê²Œ ì„¤ì •
 			if (commandLabel.equalsIgnoreCase("research") || commandLabel.equalsIgnoreCase("res")) {
-				// ÇÏÀ§ Ä¿¸Çµå ¾øÀÌ ¸ŞÀÎ Ä¿¸Çµå¸¸ ÀÔ·ÂÇßÀ» °æ¿ì
+				// í•˜ìœ„ ì»¤ë§¨ë“œ ì—†ì´ ë©”ì¸ ì»¤ë§¨ë“œë§Œ ì…ë ¥í–ˆì„ ê²½ìš°
 				if (args.length == 0) {
-					sender.sendMessage(error + "ÀÔ·ÂÇÏ½Å ¸í·É¾îÀÇ ÀÎÀÚ °ªÀÌ ³Ê¹« Àû°Å³ª ¾ø½À´Ï´Ù!" + yellow + " /res help ¶Ç´Â /research help "
-							+ red + " ¸¦ ÅëÇØ Research ÇÃ·¯±×ÀÎÀÇ ´õ ¸¹Àº ¸í·É¾î¸¦ ¾Ë¾Æº¸¼¼¿ä!");
+					sender.sendMessage(error + "ì…ë ¥í•˜ì‹  ëª…ë ¹ì–´ì˜ ì¸ì ê°’ì´ ë„ˆë¬´ ì ê±°ë‚˜ ì—†ìŠµë‹ˆë‹¤!" + yellow + " /res help ë˜ëŠ” /research help "
+							+ red + " ë¥¼ í†µí•´ Research í”ŒëŸ¬ê·¸ì¸ì˜ ë” ë§ì€ ëª…ë ¹ì–´ë¥¼ ì•Œì•„ë³´ì„¸ìš”!");
 				}
-				// ÇÏÀ§ Ä¿¸Çµåµµ ÀÔ·ÂÇßÀ» °æ¿ì
+				// í•˜ìœ„ ì»¤ë§¨ë“œë„ ì…ë ¥í–ˆì„ ê²½ìš°
 				else {
-					// Ä¿¸Çµå "res help"
+					// ì»¤ë§¨ë“œ "res help"
 					if (args[0].equalsIgnoreCase("help")) {
-						sender.sendMessage(prefix + "¸í·É¾î Àü¼ÛÀÚ: " + yellow + "ÇÃ·¹ÀÌ¾î");
+						sender.sendMessage(prefix + "ëª…ë ¹ì–´ ì „ì†¡ì: " + yellow + "í”Œë ˆì´ì–´");
 						sender.sendMessage(
-								green + "=-=-=-=-=-=-=-=-=-=-= Research ÇÃ·¯±×ÀÎ ¸í·É¾î : ÄÜ¼Ö =-=-=-=-=-=-=-=-=-=-=");
-						sender.sendMessage(gold + "< /res ¿Í /research ·Î ¾Æ·¡ÀÇ Ä¿¸ÇµåµéÀ» »ç¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù! >");
-						sender.sendMessage(green + "/res help" + cleft + "¸í·É¾î Àü¼ÛÀÚ¿¡ µû¶ó Research ÇÃ·¯±×ÀÎÀÇ ¸í·É¾î µµ¿ò¸»À» Ãâ·ÂÇÕ´Ï´Ù.");
+								green + "=-=-=-=-=-=-=-=-=-=-= Research í”ŒëŸ¬ê·¸ì¸ ëª…ë ¹ì–´ : ì½˜ì†” =-=-=-=-=-=-=-=-=-=-=");
+						sender.sendMessage(gold + "< /res ì™€ /research ë¡œ ì•„ë˜ì˜ ì»¤ë§¨ë“œë“¤ì„ ì‚¬ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤! >");
+						sender.sendMessage(green + "/res help" + cleft + "ëª…ë ¹ì–´ ì „ì†¡ìì— ë”°ë¼ Research í”ŒëŸ¬ê·¸ì¸ì˜ ëª…ë ¹ì–´ ë„ì›€ë§ì„ ì¶œë ¥í•©ë‹ˆë‹¤.");
 						sender.sendMessage(green + "/res notice <message>" + cleft
-								+ "¼­¹ö¿¡ Á¢¼ÓÇØ ÀÖ´Â ¸ğµç ÇÃ·¹ÀÌ¾îµé¿¡°Ô °øÁö ¸Ş¼¼Áö¸¦ Àü´ŞÇÕ´Ï´Ù. (ÃÖ´ë 512ÀÚ)");
-						sender.sendMessage(green + "/res info" + cleft + "ÇÃ·¯±×ÀÎÀÇ Á¤º¸¸¦ È®ÀÎÇÕ´Ï´Ù.");
+								+ "ì„œë²„ì— ì ‘ì†í•´ ìˆëŠ” ëª¨ë“  í”Œë ˆì´ì–´ë“¤ì—ê²Œ ê³µì§€ ë©”ì„¸ì§€ë¥¼ ì „ë‹¬í•©ë‹ˆë‹¤. (ìµœëŒ€ 512ì)");
+						sender.sendMessage(green + "/res info" + cleft + "í”ŒëŸ¬ê·¸ì¸ì˜ ì •ë³´ë¥¼ í™•ì¸í•©ë‹ˆë‹¤.");
 						sender.sendMessage(
 								green + "=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 					}
 
-					// Ä¿¸Çµå "res notice <String>"
+					// ì»¤ë§¨ë“œ "res notice <String>"
 					else if (args[0].equalsIgnoreCase("notice")) {
 						String message = "";
-						// °øÁö ³»¿ë ¾øÀÌ Ä¿¸Çµå¸¸ ÀÔ·ÂÇßÀ» °æ¿ì
+						// ê³µì§€ ë‚´ìš© ì—†ì´ ì»¤ë§¨ë“œë§Œ ì…ë ¥í–ˆì„ ê²½ìš°
 						if (args.length == 1) {
-							sender.sendMessage(error + "¸Ş¼¼Áö¸¦ ÀÔ·ÂÇÏÁö ¾Ê¾Ò½À´Ï´Ù! ¸í·É¾î¿Í ¸Ş¼¼Áö¸¦ °°ÀÌ ÀÔ·ÂÇÏ¼¼¿ä!");
+							sender.sendMessage(error + "ë©”ì„¸ì§€ë¥¼ ì…ë ¥í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤! ëª…ë ¹ì–´ì™€ ë©”ì„¸ì§€ë¥¼ ê°™ì´ ì…ë ¥í•˜ì„¸ìš”!");
 						}
-						// °øÁö ³»¿ëµµ °°ÀÌ ÀÔ·ÂÇßÀ» °æ¿ì
+						// ê³µì§€ ë‚´ìš©ë„ ê°™ì´ ì…ë ¥í–ˆì„ ê²½ìš°
 						else if (args.length > 1) {
 							StringBuilder str = new StringBuilder();
 
@@ -681,15 +681,15 @@ public class MainCommand implements CommandExecutor {
 						}
 					}
 
-					// Ä¿¸Çµå "res info"
+					// ì»¤ë§¨ë“œ "res info"
 					else if (args[0].equalsIgnoreCase("info")) {
-						sender.sendMessage(prefix + "Research ÇÃ·¯±×ÀÎÀÇ Á¤º¸¸¦ Ç¥½ÃÇÕ´Ï´Ù.");
+						sender.sendMessage(prefix + "Research í”ŒëŸ¬ê·¸ì¸ì˜ ì •ë³´ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤.");
 						sender.sendMessage(
-								green + "=-=-=-=-=-=-=-=-=-=-=-=-= Research ÇÃ·¯±×ÀÎ Á¤º¸ =-=-=-=-=-=-=-=-=-=-=-=-=");
-						sender.sendMessage(green + "- ÀÌ¸§: " + yellow + res_main.pname);
-						sender.sendMessage(green + "- ¹öÀü: " + yellow + res_main.pver + " (" + res_main.rel_type + ")");
-						sender.sendMessage(green + "- ºôµå: " + yellow + res_main.build_no);
-						sender.sendMessage(green + "- Á¦ÀÛ: " + yellow + res_main.pauth);
+								green + "=-=-=-=-=-=-=-=-=-=-=-=-= Research í”ŒëŸ¬ê·¸ì¸ ì •ë³´ =-=-=-=-=-=-=-=-=-=-=-=-=");
+						sender.sendMessage(green + "- ì´ë¦„: " + yellow + res_main.pname);
+						sender.sendMessage(green + "- ë²„ì „: " + yellow + res_main.pver + " (" + res_main.rel_type + ")");
+						sender.sendMessage(green + "- ë¹Œë“œ: " + yellow + res_main.build_no);
+						sender.sendMessage(green + "- ì œì‘: " + yellow + res_main.pauth);
 						sender.sendMessage(yellow + "Copyright (C) stageroad0820. All rights reserved.");
 						sender.sendMessage(
 								green + "=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");

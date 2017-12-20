@@ -20,10 +20,10 @@ public class Event_PlayerJoin implements Listener {
 		Event_PlayerJoin.res_main = plugin;
 	}
 
-	// ÇÃ·¯±×ÀÎ ¸Å´ÏÀú °´Ã¼ »ı¼º
+	// í”ŒëŸ¬ê·¸ì¸ ë§¤ë‹ˆì € ê°ì²´ ìƒì„±
 	PluginManager pm = Bukkit.getServer().getPluginManager();
 	
-	// ChatColor °£·«È­
+	// ChatColor ê°„ëµí™”
 	static String aqua = ChatColor.AQUA + "";
 	static String black = ChatColor.BLACK + "";
 	static String blue = ChatColor.BLUE + "";
@@ -48,7 +48,7 @@ public class Event_PlayerJoin implements Listener {
 	static String strth = ChatColor.STRIKETHROUGH + "";
 	static String under = ChatColor.UNDERLINE + "";
 
-	// ÀÚÁÖ »ç¿ëÇÏ´Â String °ª °£·«È­
+	// ìì£¼ ì‚¬ìš©í•˜ëŠ” String ê°’ ê°„ëµí™”
 	static String prefix = aqua + "[Research] " + white + "";
 	static String error = dred + "[Res Error] " + red + "";
 	static String warning = yellow + "[Res Warning] " + white + "";
@@ -58,11 +58,11 @@ public class Event_PlayerJoin implements Listener {
 		Player player = event.getPlayer();
 
 		if (!player.hasPlayedBefore() == true) {
-			event.setJoinMessage(prefix + gold + bold + player.getName() + white + " ´ÔÀÌ ¼­¹ö¿¡ Ã³À½ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù!");
+			event.setJoinMessage(prefix + gold + bold + player.getName() + white + " ë‹˜ì´ ì„œë²„ì— ì²˜ìŒ ì ‘ì†í•˜ì…¨ìŠµë‹ˆë‹¤!");
 			player.sendMessage(
-					prefix + green + "/res help ¶Ç´Â /research help" + white + " Ä¿¸Çµå¸¦ ÅëÇØ ÇÃ·¯±×ÀÎ Ä¿¸Çµå¿¡ ´ëÇØ ¾Ë¾Æº¸½Ç ¼ö ÀÖ½À´Ï´Ù!");
+					prefix + green + "/res help ë˜ëŠ” /research help" + white + " ì»¤ë§¨ë“œë¥¼ í†µí•´ í”ŒëŸ¬ê·¸ì¸ ì»¤ë§¨ë“œì— ëŒ€í•´ ì•Œì•„ë³´ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤!");
 		} else {
-			event.setJoinMessage(prefix + yellow + player.getName() + white + " ´ÔÀÌ ¼­¹ö¿¡ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù.");
+			event.setJoinMessage(prefix + yellow + player.getName() + white + " ë‹˜ì´ ì„œë²„ì— ì ‘ì†í•˜ì…¨ìŠµë‹ˆë‹¤.");
 		}
 	}
 }

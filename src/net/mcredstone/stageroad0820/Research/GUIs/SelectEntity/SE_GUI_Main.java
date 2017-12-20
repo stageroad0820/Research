@@ -15,19 +15,19 @@ import org.bukkit.plugin.PluginManager;
 import net.mcredstone.stageroad0820.Research.Main;
 
 public class SE_GUI_Main {
-	// Å¬·¡½º¿¡ ÇÊ¿äÇÑ °´Ã¼ »ı¼º ¹× ÃÊ±âÈ­
+	// í´ë˜ìŠ¤ì— í•„ìš”í•œ ê°ì²´ ìƒì„± ë° ì´ˆê¸°í™”
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static Main res_main;
 	
-	// ¸ŞÀÎ Å¬·¡½º¿Í ¿¬°á
+	// ë©”ì¸ í´ë˜ìŠ¤ì™€ ì—°ê²°
 	public SE_GUI_Main(Main plugin) {
 		SE_GUI_Main.res_main = plugin;
 	}
 	
-	// ÇÃ·¯±×ÀÎ °ü¸®ÀÚ °´Ã¼
+	// í”ŒëŸ¬ê·¸ì¸ ê´€ë¦¬ì ê°ì²´
 	PluginManager pm = Bukkit.getServer().getPluginManager();
 	
-	// ChatColor °£·«È­
+	// ChatColor ê°„ëµí™”
 	static String aqua = ChatColor.AQUA + "";
 	static String black = ChatColor.BLACK + "";
 	static String blue = ChatColor.BLUE + "";
@@ -52,92 +52,92 @@ public class SE_GUI_Main {
 	static String strth = ChatColor.STRIKETHROUGH + "";
 	static String under = ChatColor.UNDERLINE + "";
 
-	// ÀÚÁÖ »ç¿ëÇÏ´Â String °ª °£·«È­
+	// ìì£¼ ì‚¬ìš©í•˜ëŠ” String ê°’ ê°„ëµí™”
 	static String prefix = aqua + "[Research] " + white + "";
 	static String error = dred + "[Res Error] " + red + "";
 	static String warning = yellow + "[Res Warning] " + white + "";
 	
-	// GUI Ã¢ »ı¼º - ¸ŞÀÎÈ­¸é
+	// GUI ì°½ ìƒì„± - ë©”ì¸í™”ë©´
 	public static void openInv(Player player) {
-		Inventory inv = Bukkit.createInventory(null, 54, "¿£Æ¼Æ¼¸¦ ¼±ÅÃÇÏ¼¼¿ä");
+		Inventory inv = Bukkit.createInventory(null, 54, "ì—”í‹°í‹°ë¥¼ ì„ íƒí•˜ì„¸ìš”");
 		
-		// ¿£Æ¼Æ¼ Á¾·ù : ÀüÃ¼ ¿£Æ¼Æ¼ ¸ñ·Ï (¾ÆÀÌÄÜ: Ã¥°ú ±êÆæ)
+		// ì—”í‹°í‹° ì¢…ë¥˜ : ì „ì²´ ì—”í‹°í‹° ëª©ë¡ (ì•„ì´ì½˜: ì±…ê³¼ ê¹ƒíœ)
 		ItemStack is_allMob = new ItemStack(Material.BOOK_AND_QUILL);
 		ItemMeta im_allMob = is_allMob.getItemMeta();
 		
-		im_allMob.setDisplayName(gold + "ÀüÃ¼ ¿£Æ¼Æ¼ ¸ñ·Ï");
+		im_allMob.setDisplayName(gold + "ì „ì²´ ì—”í‹°í‹° ëª©ë¡");
 		
-		im_allMob.setLore(Arrays.asList(gray + "¸¶ÀÎÅ©·¡ÇÁÆ®¿¡¼­ ¿£Æ¼Æ¼(Entity)·Î Ã³¸®ÇÏ´Â ¸ğµç °´Ã¼µéÀÇ ¸ñ·ÏÀ» Ç¥½ÃÇÕ´Ï´Ù."));
+		im_allMob.setLore(Arrays.asList(gray + "ë§ˆì¸í¬ë˜í”„íŠ¸ì—ì„œ ì—”í‹°í‹°(Entity)ë¡œ ì²˜ë¦¬í•˜ëŠ” ëª¨ë“  ê°ì²´ë“¤ì˜ ëª©ë¡ì„ í‘œì‹œí•©ë‹ˆë‹¤."));
 		
 		is_allMob.setItemMeta(im_allMob);
 		
-		// ¿£Æ¼Æ¼ Á¾·ù : Ä£È­Àû ¸÷ (¾ÆÀÌÄÜ: Èò»ö ¾çÅĞ)
+		// ì—”í‹°í‹° ì¢…ë¥˜ : ì¹œí™”ì  ëª¹ (ì•„ì´ì½˜: í°ìƒ‰ ì–‘í„¸)
 		ItemStack is_psMob = new ItemStack(Material.WOOL);
 		ItemMeta im_psMob = is_psMob.getItemMeta();
 		
-		im_psMob.setDisplayName(aqua + "Ä£È­Àû ¸÷");
+		im_psMob.setDisplayName(aqua + "ì¹œí™”ì  ëª¹");
 		
-		im_psMob.setLore(Arrays.asList(gray + "Ä£È­Àû ¸÷Àº ÇÃ·¹ÀÌ¾î¸¦ °ø°İÇÏÁöµµ ¾Ê°í, ÇÃ·¹ÀÌ¾î°¡ °ø°ÜÇÏ¸é µµ¸Á°¡´Â ¸÷ÀÇ Á¾·ùÀÔ´Ï´Ù."
-				, "", blue + "Á¾·ù: ¹ÚÁã, ´ß, ¼Ò, ¹«½¬·ë (¹ö¼¸¼Ò), µÅÁö, Åä³¢, ¾ç, ½ºÄÌ·¹Åæ ¸», ¿ÀÂ¡¾î, ÁÖ¹Î"));
+		im_psMob.setLore(Arrays.asList(gray + "ì¹œí™”ì  ëª¹ì€ í”Œë ˆì´ì–´ë¥¼ ê³µê²©í•˜ì§€ë„ ì•Šê³ , í”Œë ˆì´ì–´ê°€ ê³µê²¨í•˜ë©´ ë„ë§ê°€ëŠ” ëª¹ì˜ ì¢…ë¥˜ì…ë‹ˆë‹¤."
+				, "", blue + "ì¢…ë¥˜: ë°•ì¥, ë‹­, ì†Œ, ë¬´ì‰¬ë£¸ (ë²„ì„¯ì†Œ), ë¼ì§€, í† ë¼, ì–‘, ìŠ¤ì¼ˆë ˆí†¤ ë§, ì˜¤ì§•ì–´, ì£¼ë¯¼"));
 		
 		is_psMob.setItemMeta(im_psMob);
 		
-		// ¿£Æ¼Æ¼ Á¾·ù : Áß¸³Àû ¸÷ (¾ÆÀÌÄÜ: ¹æÆĞ)
+		// ì—”í‹°í‹° ì¢…ë¥˜ : ì¤‘ë¦½ì  ëª¹ (ì•„ì´ì½˜: ë°©íŒ¨)
 		ItemStack is_ntMob = new ItemStack(Material.SHIELD);
 		ItemMeta im_ntMob = is_ntMob.getItemMeta();
 		
-		im_ntMob.setDisplayName(green + "Áß¸³Àû ¸÷");
+		im_ntMob.setDisplayName(green + "ì¤‘ë¦½ì  ëª¹");
 		
-		im_ntMob.setLore(Arrays.asList(gray + "Áß¸³Àû ¸÷Àº ÇÃ·¹ÀÌ¾î°¡ ¸ÕÀú °ø°İÇÏ±â Àü±îÁö ÇÃ·¹ÀÌ¾î¸¦ °ø°İÇÏÁö ¾Ê´Â ¸÷ÀÇ Á¾·ùÀÔ´Ï´Ù."
-				, "", blue + "Á¾·ù: °Å¹Ì, µ¿±¼ °Å¹Ì (Áö»ó), ¿£´õ¸Ç, " + red + "ºÏ±Ø°õ (1.12) " + blue + ", µÅÁö Á»ºñ"));
+		im_ntMob.setLore(Arrays.asList(gray + "ì¤‘ë¦½ì  ëª¹ì€ í”Œë ˆì´ì–´ê°€ ë¨¼ì € ê³µê²©í•˜ê¸° ì „ê¹Œì§€ í”Œë ˆì´ì–´ë¥¼ ê³µê²©í•˜ì§€ ì•ŠëŠ” ëª¹ì˜ ì¢…ë¥˜ì…ë‹ˆë‹¤."
+				, "", blue + "ì¢…ë¥˜: ê±°ë¯¸, ë™êµ´ ê±°ë¯¸ (ì§€ìƒ), ì—”ë”ë§¨, " + red + "ë¶ê·¹ê³° (1.12) " + blue + ", ë¼ì§€ ì¢€ë¹„"));
 		
 		is_ntMob.setItemMeta(im_ntMob);
 		
-		// ¿£Æ¼Æ¼ Á¾·ù: Àû´ëÀû ¸÷ (¾ÆÀÌÄÜ: ´ÙÀÌ¾Æ¸óµå Ä®)
+		// ì—”í‹°í‹° ì¢…ë¥˜: ì ëŒ€ì  ëª¹ (ì•„ì´ì½˜: ë‹¤ì´ì•„ëª¬ë“œ ì¹¼)
 		ItemStack is_hsMob = new ItemStack(Material.DIAMOND_SWORD);
 		ItemMeta im_hsMob = is_hsMob.getItemMeta();
 		
-		im_hsMob.setDisplayName(red + "Àû´ëÀû ¸÷");
+		im_hsMob.setDisplayName(red + "ì ëŒ€ì  ëª¹");
 		
-		im_hsMob.setLore(Arrays.asList(gray + "Àû´ëÀû ¸÷Àº ÀÚ½ÅÀÇ ½Ã¾ß¿¡ µé¾î¿Â ÇÃ·¹ÀÌ¾î¸¦ ¸ÕÀú °ø°İÇÏ´Â ¸÷ÀÇ Á¾·ù ÀÔ´Ï´Ù."
-				, "", blue + "Á¾·ù: Á»ºñ, ½ºÄÌ·¹Åæ, ½ºÆÄÀÌ´õ Á¶Å°, Á»¹ú·¹, Å©¸®ÆÛ ¿Ü 19Á¾"));
+		im_hsMob.setLore(Arrays.asList(gray + "ì ëŒ€ì  ëª¹ì€ ìì‹ ì˜ ì‹œì•¼ì— ë“¤ì–´ì˜¨ í”Œë ˆì´ì–´ë¥¼ ë¨¼ì € ê³µê²©í•˜ëŠ” ëª¹ì˜ ì¢…ë¥˜ ì…ë‹ˆë‹¤."
+				, "", blue + "ì¢…ë¥˜: ì¢€ë¹„, ìŠ¤ì¼ˆë ˆí†¤, ìŠ¤íŒŒì´ë” ì¡°í‚¤, ì¢€ë²Œë ˆ, í¬ë¦¬í¼ ì™¸ 19ì¢…"));
 		
 		is_hsMob.setItemMeta(im_hsMob);
 		
-		// ¿£Æ¼Æ¼ Á¾·ù: ±æµéÀÌ±â °¡´ÉÇÑ ¸÷ (¾ÆÀÌÄÜ: ±êÅĞ)
+		// ì—”í‹°í‹° ì¢…ë¥˜: ê¸¸ë“¤ì´ê¸° ê°€ëŠ¥í•œ ëª¹ (ì•„ì´ì½˜: ê¹ƒí„¸)
 		ItemStack is_tmMob = new ItemStack(Material.FEATHER);
 		ItemMeta im_tmMob = is_tmMob.getItemMeta();
 		
-		im_tmMob.setDisplayName(yellow + "±æµéÀÌ±â °¡´ÉÇÑ ¸÷");
+		im_tmMob.setDisplayName(yellow + "ê¸¸ë“¤ì´ê¸° ê°€ëŠ¥í•œ ëª¹");
 		
-		im_tmMob.setLore(Arrays.asList(gray + "±æµéÀÌ±â °¡´ÉÇÑ ¸÷Àº ÀÏÁ¤ ¾ÆÀÌÅÛÀ» ÀÌ¿ëÇØ ÇÃ·¹ÀÌ¾î¸¦ µû¸£°Ô ¸¸µé°Å³ª ±³¹è¸¦ ½ÃÅ³ ¼ö ÀÖ´Â ¸÷ÀÇ Á¾·ùÀÔ´Ï´Ù."
-				, "", blue + "Á¾·ù: ´ç³ª±Í, ¸», " + red + "¶ó¸¶ (1.12)," + blue + " ³ë»õ, ¿À¼¿·Ô, " + red + "¾Ş¹«»õ (1.12)," + blue + " ´Á´ë"));
+		im_tmMob.setLore(Arrays.asList(gray + "ê¸¸ë“¤ì´ê¸° ê°€ëŠ¥í•œ ëª¹ì€ ì¼ì • ì•„ì´í…œì„ ì´ìš©í•´ í”Œë ˆì´ì–´ë¥¼ ë”°ë¥´ê²Œ ë§Œë“¤ê±°ë‚˜ êµë°°ë¥¼ ì‹œí‚¬ ìˆ˜ ìˆëŠ” ëª¹ì˜ ì¢…ë¥˜ì…ë‹ˆë‹¤."
+				, "", blue + "ì¢…ë¥˜: ë‹¹ë‚˜ê·€, ë§, " + red + "ë¼ë§ˆ (1.12)," + blue + " ë…¸ìƒˆ, ì˜¤ì…€ë¡¯, " + red + "ì•µë¬´ìƒˆ (1.12)," + blue + " ëŠ‘ëŒ€"));
 		
 		is_tmMob.setItemMeta(im_tmMob);
 		
-		// ¿£Æ¼Æ¼ Á¾·ù: º¸½º ¸÷ (¾ÆÀÌÄÜ: ¿£´õ µå·¡°ïÀÇ ¾Ë)
+		// ì—”í‹°í‹° ì¢…ë¥˜: ë³´ìŠ¤ ëª¹ (ì•„ì´ì½˜: ì—”ë” ë“œë˜ê³¤ì˜ ì•Œ)
 		ItemStack is_bsMob = new ItemStack(Material.DRAGON_EGG);
 		ItemMeta im_bsMob = is_bsMob.getItemMeta();
 		
-		im_bsMob.setDisplayName(dred + bold + "º¸½º ¸÷");
+		im_bsMob.setDisplayName(dred + bold + "ë³´ìŠ¤ ëª¹");
 		
-		im_bsMob.setLore(Arrays.asList(red + bold + "[ À§ Çè ! ]", gray + "¸¶ÀÎÅ©·¡ÇÁÆ®¿¡ Á¸ÀçÇÏ´Â º¸½º ¸÷ÀÇ Á¾·ù ÀÔ´Ï´Ù."
-				, "", blue + "Á¾·ù: ¿£´õ µå·¡°ï, À§´õ"));
+		im_bsMob.setLore(Arrays.asList(red + bold + "[ ìœ„ í—˜ ! ]", gray + "ë§ˆì¸í¬ë˜í”„íŠ¸ì— ì¡´ì¬í•˜ëŠ” ë³´ìŠ¤ ëª¹ì˜ ì¢…ë¥˜ ì…ë‹ˆë‹¤."
+				, "", blue + "ì¢…ë¥˜: ì—”ë” ë“œë˜ê³¤, ìœ„ë”"));
 		
 		is_bsMob.setItemMeta(im_bsMob);
 		
-		// ¿£Æ¼Æ¼ Á¾·ù: ±âÅ¸ ¸÷ (¾ÆÀÌÄÜ: Ä¿¸Çµå ºí·°)
+		// ì—”í‹°í‹° ì¢…ë¥˜: ê¸°íƒ€ ëª¹ (ì•„ì´ì½˜: ì»¤ë§¨ë“œ ë¸”ëŸ­)
 		ItemStack is_cmdMob = new ItemStack(Material.COMMAND);
 		ItemMeta im_cmdMob = is_cmdMob.getItemMeta();
 		
-		im_cmdMob.setDisplayName(white + "±âÅ¸ ¸÷");
+		im_cmdMob.setDisplayName(white + "ê¸°íƒ€ ëª¹");
 		
-		im_cmdMob.setLore(Arrays.asList(gray + "ÀÏ¹İÀûÀÎ ¹æ¹ıÀ¸·Î ¼ÒÈ¯µÇÁö ¾Ê°Å³ª Á÷Á¢ ½ºÆùÇÏ´Â ¸÷µéÀÇ Á¾·ù ÀÔ´Ï´Ù."
-				, "", blue + "Á¾·ù: ÀÚÀÌ¾ğÆ®, »ìÀÎ Åä³¢, Á»ºñ ¸», È¯¼ú»ç, Ã¶ °ñ·¥, ´«»ç¶÷"));
+		im_cmdMob.setLore(Arrays.asList(gray + "ì¼ë°˜ì ì¸ ë°©ë²•ìœ¼ë¡œ ì†Œí™˜ë˜ì§€ ì•Šê±°ë‚˜ ì§ì ‘ ìŠ¤í°í•˜ëŠ” ëª¹ë“¤ì˜ ì¢…ë¥˜ ì…ë‹ˆë‹¤."
+				, "", blue + "ì¢…ë¥˜: ìì´ì–¸íŠ¸, ì‚´ì¸ í† ë¼, ì¢€ë¹„ ë§, í™˜ìˆ ì‚¬, ì²  ê³¨ë¨, ëˆˆì‚¬ëŒ"));
 		
 		is_cmdMob.setItemMeta(im_cmdMob);
 		
-		// À¯¸®ÆÇ
+		// ìœ ë¦¬íŒ
 		ItemStack is_wall = new ItemStack(Material.THIN_GLASS);
 		ItemMeta im_wall = is_wall.getItemMeta();
 		
@@ -145,7 +145,7 @@ public class SE_GUI_Main {
 		
 		is_wall.setItemMeta(im_wall);
 		
-		/* ¾ÆÀÌÅÛ ¼³Ä¡
+		/* ì•„ì´í…œ ì„¤ì¹˜
 		 * 
 		 * 0 0 0 0 0 0 0 0 0
 		 * 0 * * * 1 * * * 0
@@ -154,7 +154,7 @@ public class SE_GUI_Main {
 		 * 0 * 5 * 6 * 7 * 0
 		 * 0 0 0 0 0 0 0 0 0
 		 * 
-		 * 0 : À¯¸®ÆÇ / 1 : ÀüÃ¼ ¿£Æ¼Æ¼ / 2 : Ä£È­ / 3 : Áß¸³ / 4 : Àû´ë / 5 : ±æµéÀÌ±â / 6 : º¸½º / 7 : ±âÅ¸ / * : ºóÄ­
+		 * 0 : ìœ ë¦¬íŒ / 1 : ì „ì²´ ì—”í‹°í‹° / 2 : ì¹œí™” / 3 : ì¤‘ë¦½ / 4 : ì ëŒ€ / 5 : ê¸¸ë“¤ì´ê¸° / 6 : ë³´ìŠ¤ / 7 : ê¸°íƒ€ / * : ë¹ˆì¹¸
 		 */
 		
 		inv.setItem(0, is_wall);

@@ -14,16 +14,16 @@ import org.bukkit.inventory.meta.ItemMeta;
 import net.mcredstone.stageroad0820.Research.Main;
 
 public class GUI_Test {
-	// ÇÃ·¯±×ÀÎ¿¡ ÇÊ¿äÇÑ °´Ã¼ »ı¼º ¹× ¼±¾ğ
+	// í”ŒëŸ¬ê·¸ì¸ì— í•„ìš”í•œ ê°ì²´ ìƒì„± ë° ì„ ì–¸
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static Main res_main;
 
-	// Å¬·¡½º ¿¬°á
+	// í´ë˜ìŠ¤ ì—°ê²°
 	public GUI_Test(Main plugin) {
 		GUI_Test.res_main = plugin;
 	}
 
-	// ChatColor °£·«È­
+	// ChatColor ê°„ëµí™”
 	static String aqua = ChatColor.AQUA + "";
 	static String black = ChatColor.BLACK + "";
 	static String blue = ChatColor.BLUE + "";
@@ -48,53 +48,53 @@ public class GUI_Test {
 	static String strth = ChatColor.STRIKETHROUGH + "";
 	static String under = ChatColor.UNDERLINE + "";
 
-	// ÀÚÁÖ »ç¿ëÇÏ´Â String °ª °£·«È­
+	// ìì£¼ ì‚¬ìš©í•˜ëŠ” String ê°’ ê°„ëµí™”
 	static String prefix = aqua + "[Research] " + white + "";
 	static String error = dred + "[Res Error] " + red + "";
 	static String warning = yellow + "[Res Warning] " + white + "";
 	
-	// º¯¼ö ¼³Á¤
+	// ë³€ìˆ˜ ì„¤ì •
 	static int now_page = 1;
 	static int max_page = 1;
 	
-	// GUI Ã¢ »ı¼º - ±â´É Å×½ºÆ®
+	// GUI ì°½ ìƒì„± - ê¸°ëŠ¥ í…ŒìŠ¤íŠ¸
 	public static void openInv(Player player) {
-		 Inventory inv = Bukkit.createInventory(null, 54, "Research ÇÃ·¯±×ÀÎ - GUI ±â´É Å×½ºÆ®");
+		 Inventory inv = Bukkit.createInventory(null, 54, "Research í”ŒëŸ¬ê·¸ì¸ - GUI ê¸°ëŠ¥ í…ŒìŠ¤íŠ¸");
 		 
-		 // ±â´É: Å×½ºÆ® ³¡³»±â (¾ÆÀÌÄÜ: ³ª¹« ¹®)
+		 // ê¸°ëŠ¥: í…ŒìŠ¤íŠ¸ ëë‚´ê¸° (ì•„ì´ì½˜: ë‚˜ë¬´ ë¬¸)
 		 ItemStack is_exit = new ItemStack(Material.WOOD_DOOR);
 		 ItemMeta im_exit = is_exit.getItemMeta();
 		 
-		 im_exit.setDisplayName(red + "GUI ±â´É Å×½ºÆ® ³¡³»±â");
+		 im_exit.setDisplayName(red + "GUI ê¸°ëŠ¥ í…ŒìŠ¤íŠ¸ ëë‚´ê¸°");
 		 
-		 im_exit.setLore(Arrays.asList(gray + "GUI ±â´É Å×½ºÆ®¸¦ ¿ÏÀüÈ÷ Á¾·áÇÕ´Ï´Ù.",
-				 gray + "´Ù½Ã ½ÇÇàÇÏ½Ã±â À§ÇØ¼­´Â " + yellow + "/res test gui" + gray + " Ä¿¸Çµå¸¦ ´Ù½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.",
-				 "", blue + "±â´É: Å×½ºÆ® ³¡³»±â"));
+		 im_exit.setLore(Arrays.asList(gray + "GUI ê¸°ëŠ¥ í…ŒìŠ¤íŠ¸ë¥¼ ì™„ì „íˆ ì¢…ë£Œí•©ë‹ˆë‹¤.",
+				 gray + "ë‹¤ì‹œ ì‹¤í–‰í•˜ì‹œê¸° ìœ„í•´ì„œëŠ” " + yellow + "/res test gui" + gray + " ì»¤ë§¨ë“œë¥¼ ë‹¤ì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.",
+				 "", blue + "ê¸°ëŠ¥: í…ŒìŠ¤íŠ¸ ëë‚´ê¸°"));
 		 
 		 is_exit.setItemMeta(im_exit);
 		 
-		 // ±â´É: ¿£Æ¼Æ¼ ¼ÒÈ¯ GUI - ¸ŞÀÎÈ­¸é (¾ÆÀÌÄÜ: ºí·¹ÀÌÁîÀÇ ¸·´ë)
+		 // ê¸°ëŠ¥: ì—”í‹°í‹° ì†Œí™˜ GUI - ë©”ì¸í™”ë©´ (ì•„ì´ì½˜: ë¸”ë ˆì´ì¦ˆì˜ ë§‰ëŒ€)
 		 ItemStack is_entity1 = new ItemStack(Material.BLAZE_ROD);
 		 ItemMeta im_entity1 = is_entity1.getItemMeta();
 		 
-		 im_entity1.setDisplayName(aqua + "¿£Æ¼Æ¼ ¼ÒÈ¯ GUI - ¸ŞÀÎÈ­¸é");
+		 im_entity1.setDisplayName(aqua + "ì—”í‹°í‹° ì†Œí™˜ GUI - ë©”ì¸í™”ë©´");
 		 
-		 im_entity1.setLore(Arrays.asList(gray + "Å¬¸¯ÇÏ¸é ÇØ´ç Ã¢ÀÌ ¿­¸³´Ï´Ù. ³»ºÎ ±â´Éµµ °°ÀÌ ÀÌ¿ëÇÒ ¼ö ÀÖ½À´Ï´Ù.",
-				 "", blue + "±â´É: SE_GUI_Main.openInv(" + player.getName() + ") ½ÇÇà"));
+		 im_entity1.setLore(Arrays.asList(gray + "í´ë¦­í•˜ë©´ í•´ë‹¹ ì°½ì´ ì—´ë¦½ë‹ˆë‹¤. ë‚´ë¶€ ê¸°ëŠ¥ë„ ê°™ì´ ì´ìš©í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.",
+				 "", blue + "ê¸°ëŠ¥: SE_GUI_Main.openInv(" + player.getName() + ") ì‹¤í–‰"));
 		 
 		 is_entity1.setItemMeta(im_entity1);
 		 
-		 // ±â´É: Å×½ºÆ® ¾øÀ½ (¾ÆÀÌÄÜ: ¾çÅĞ)
+		 // ê¸°ëŠ¥: í…ŒìŠ¤íŠ¸ ì—†ìŒ (ì•„ì´ì½˜: ì–‘í„¸)
 		 ItemStack is_nothing = new ItemStack(Material.WOOL);
 		 ItemMeta im_nothing = is_nothing.getItemMeta();
 		 
-		 im_nothing.setDisplayName(dgray + "Å×½ºÆ® ÇÒ ±â´ÉÀÌ ¾ø½À´Ï´Ù.");
+		 im_nothing.setDisplayName(dgray + "í…ŒìŠ¤íŠ¸ í•  ê¸°ëŠ¥ì´ ì—†ìŠµë‹ˆë‹¤.");
 		 
-		 im_nothing.setLore(Arrays.asList(gray + "ÇöÀç Å×½ºÆ®ÇÒ ±â´ÉÀÌ ¾ø°Å³ª µî·ÏµÇÁö ¾Ê¾Ò½À´Ï´Ù.", "", blue + "±â´É: ¾øÀ½"));
+		 im_nothing.setLore(Arrays.asList(gray + "í˜„ì¬ í…ŒìŠ¤íŠ¸í•  ê¸°ëŠ¥ì´ ì—†ê±°ë‚˜ ë“±ë¡ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.", "", blue + "ê¸°ëŠ¥: ì—†ìŒ"));
 		 
 		 is_nothing.setItemMeta(im_nothing);
 		 
-		 // À¯¸®ÆÇ
+		 // ìœ ë¦¬íŒ
 		 ItemStack is_wall = new ItemStack(Material.THIN_GLASS);
 		 ItemMeta im_wall = is_wall.getItemMeta();
 		 
@@ -102,35 +102,35 @@ public class GUI_Test {
 		 
 		 is_wall.setItemMeta(im_wall);
 		 
-		 // ´ÙÀ½ ÆäÀÌÁö
+		 // ë‹¤ìŒ í˜ì´ì§€
 		 ItemStack is_nextp = new ItemStack(Material.RAILS);
 		 ItemMeta im_nextp = is_nextp.getItemMeta();
 		 
-		 im_nextp.setDisplayName(white + "´ÙÀ½ ÆäÀÌÁö");
+		 im_nextp.setDisplayName(white + "ë‹¤ìŒ í˜ì´ì§€");
 		 
-		 im_nextp.setLore(Arrays.asList(gray + "´ÙÀ½ ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù."));
+		 im_nextp.setLore(Arrays.asList(gray + "ë‹¤ìŒ í˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤."));
 		 
 		 is_nextp.setItemMeta(im_nextp);
 		 
-		 // ÀÌÀü ÆäÀÌÁö
+		 // ì´ì „ í˜ì´ì§€
 		 ItemStack is_prevp = new ItemStack(Material.LADDER);
 		 ItemMeta im_prevp = is_nextp.getItemMeta();
 		 
-		 im_prevp.setDisplayName(white + "ÀÌÀü ÆäÀÌÁö");
+		 im_prevp.setDisplayName(white + "ì´ì „ í˜ì´ì§€");
 		 
-		 im_prevp.setLore(Arrays.asList(gray + "ÀÌÀü ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù."));
+		 im_prevp.setLore(Arrays.asList(gray + "ì´ì „ í˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤."));
 		 
 		 is_prevp.setItemMeta(im_prevp);
 		 
-		 // ÇöÀç ÆäÀÌÁö
+		 // í˜„ì¬ í˜ì´ì§€
 		 ItemStack is_page = new ItemStack(Material.BOOK);
 		 ItemMeta im_page = is_page.getItemMeta();
 		 
-		 im_page.setDisplayName(white + "ÇöÀç ÆäÀÌÁö: " + now_page + " Áß " + max_page + " ÆäÀÌÁö");
+		 im_page.setDisplayName(white + "í˜„ì¬ í˜ì´ì§€: " + now_page + " ì¤‘ " + max_page + " í˜ì´ì§€");
 		 
 		 is_page.setItemMeta(im_page);
 		 
-		 // ¾ÆÀÌÅÛ ¼³Ä¡
+		 // ì•„ì´í…œ ì„¤ì¹˜
 		 
 		 /*
 		  * 0 0 0 0 0 0 0 0 0
@@ -140,7 +140,7 @@ public class GUI_Test {
 		  * 0 * * * * * * * 0
 		  * 0 0 0 3 4 5 0 0 -
 		  * 
-		  * 0 : À¯¸®ÆÇ / 1 : ¿£Æ¼Æ¼ GUI / 2 : Å×½ºÆ® ¾øÀ½ / 3 : ÀÌÀü ÆäÀÌÁö / 4 : ÇöÀç ÆäÀÌÁö / 5 : ´ÙÀ½ ÆäÀÌÁö / * : ºóÄ­ / - : Å×½ºÆ® ³¡³»±â
+		  * 0 : ìœ ë¦¬íŒ / 1 : ì—”í‹°í‹° GUI / 2 : í…ŒìŠ¤íŠ¸ ì—†ìŒ / 3 : ì´ì „ í˜ì´ì§€ / 4 : í˜„ì¬ í˜ì´ì§€ / 5 : ë‹¤ìŒ í˜ì´ì§€ / * : ë¹ˆì¹¸ / - : í…ŒìŠ¤íŠ¸ ëë‚´ê¸°
 		  */
 		 
 		 inv.setItem(0, is_wall);

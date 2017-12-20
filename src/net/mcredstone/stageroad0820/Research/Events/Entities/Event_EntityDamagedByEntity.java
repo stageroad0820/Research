@@ -15,19 +15,19 @@ import org.bukkit.plugin.PluginManager;
 import net.mcredstone.stageroad0820.Research.Main;
 
 public class Event_EntityDamagedByEntity implements Listener {
-	// Å¬·¡½º¿¡ ÇÊ¿äÇÑ °´Ã¼ ¼±¾ğ ¹× »ı¼º
+	// í´ë˜ìŠ¤ì— í•„ìš”í•œ ê°ì²´ ì„ ì–¸ ë° ìƒì„±
 	public final Logger logger = Logger.getLogger("Minecraft");
 	public static Main res_main;
 
-	// Å¬·¡½º ¿¬°á
+	// í´ë˜ìŠ¤ ì—°ê²°
 	public Event_EntityDamagedByEntity(Main plugin) {
 		Event_EntityDamagedByEntity.res_main = plugin;
 	}
 
-	// ÇÃ·¯±×ÀÎ °ü¸®ÀÚ °´Ã¼
+	// í”ŒëŸ¬ê·¸ì¸ ê´€ë¦¬ì ê°ì²´
 	PluginManager pm = Bukkit.getServer().getPluginManager();
 
-	// ChatColor °£·«È­
+	// ChatColor ê°„ëµí™”
 	static String aqua = ChatColor.AQUA + "";
 	static String black = ChatColor.BLACK + "";
 	static String blue = ChatColor.BLUE + "";
@@ -52,43 +52,43 @@ public class Event_EntityDamagedByEntity implements Listener {
 	static String strth = ChatColor.STRIKETHROUGH + "";
 	static String under = ChatColor.UNDERLINE + "";
 
-	// ÀÚÁÖ »ç¿ëÇÏ´Â String °ª °£·«È­
+	// ìì£¼ ì‚¬ìš©í•˜ëŠ” String ê°’ ê°„ëµí™”
 	static String prefix = aqua + "[Research] " + white + "";
 	static String error = dred + "[Res Error] " + red + "";
 	static String warning = yellow + "[Res Warning] " + white + "";
 	static String debug = dgray + "[Res Debug]" + white + "";
 
-	// ÀÌº¥Æ® ÇÚµé·¯ »ı¼º: EntityDamagedByEntityEvent
+	// ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬ ìƒì„±: EntityDamagedByEntityEvent
 	@EventHandler
 	public static void onEntityDamaged(EntityDamageByEntityEvent event) {
-		// ¿£Æ¼Æ¼ °´Ã¼ »ı¼º
+		// ì—”í‹°í‹° ê°ì²´ ìƒì„±
 		Entity entity = event.getEntity();
 		Entity enemy = event.getDamager();
 
-		// ¹ŞÀº µ¥¹ÌÁö¿Í ÁØ µ¥¹ÌÁö¸¦ ¼³Á¤
+		// ë°›ì€ ë°ë¯¸ì§€ì™€ ì¤€ ë°ë¯¸ì§€ë¥¼ ì„¤ì •
 		double dm_give = ((LivingEntity) entity).getLastDamage();
 		double dm_take = event.getDamage();
 
-		// ¿£Æ¼Æ¼ÀÇ Á¾·ù Áß ÇÃ·¹ÀÌ¾î ÀÏ °æ¿ì
+		// ì—”í‹°í‹°ì˜ ì¢…ë¥˜ ì¤‘ í”Œë ˆì´ì–´ ì¼ ê²½ìš°
 		if (entity instanceof Player) {
-			// ÇÃ·¹ÀÌ¾î ¼³Á¤
+			// í”Œë ˆì´ì–´ ì„¤ì •
 			Player player = (Player) entity;
 
-			// ¿£Æ¼Æ¼ ÀÌ¸§ ¼³Á¤
+			// ì—”í‹°í‹° ì´ë¦„ ì„¤ì •
 			String damager = entity.getName();
 			String attacker = enemy.getName();
 
-			player.sendMessage(prefix + yellow + damager + white + " (ÀÌ)°¡ " + yellow + attacker + white + " ¿¡°Ô " 
-					+ red + dm_give + white + " ¸¸Å­ÀÇ µ¥¹ÌÁö¸¦ ¹Ş¾Ò½À´Ï´Ù!" + gray + " {debug 1}");
+			player.sendMessage(prefix + yellow + damager + white + " (ì´)ê°€ " + yellow + attacker + white + " ì—ê²Œ " 
+					+ red + dm_give + white + " ë§Œí¼ì˜ ë°ë¯¸ì§€ë¥¼ ë°›ì•˜ìŠµë‹ˆë‹¤!" + gray + " {debug 1}");
 		}
-		// ´Ù¸¥ Á¾·ù ÀÏ °æ¿ì
+		// ë‹¤ë¥¸ ì¢…ë¥˜ ì¼ ê²½ìš°
 		else {
-			// ¿£Æ¼Æ¼ ÀÌ¸§ ¼³Á¤
+			// ì—”í‹°í‹° ì´ë¦„ ì„¤ì •
 			String damager = entity.getName();
 			String attacker = enemy.getName();
 
-			((Player) enemy).sendMessage(prefix + yellow + attacker + white + " (ÀÌ)°¡ " + yellow + damager + white + " ¿¡°Ô " + red
-					+ dm_take + white + " ¸¸Å­ÀÇ µ¥¹ÌÁö¸¦ ÁÖ¾ú½À´Ï´Ù!" + gray + " {debug 2}");
+			((Player) enemy).sendMessage(prefix + yellow + attacker + white + " (ì´)ê°€ " + yellow + damager + white + " ì—ê²Œ " + red
+					+ dm_take + white + " ë§Œí¼ì˜ ë°ë¯¸ì§€ë¥¼ ì£¼ì—ˆìŠµë‹ˆë‹¤!" + gray + " {debug 2}");
 		}
 	}
 }

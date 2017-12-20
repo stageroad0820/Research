@@ -20,7 +20,7 @@ public class SE_Event_Passive implements Listener {
 		SE_Event_Passive.res_main = plugin;
 	}
 
-	// ChatColor °£·«È­
+	// ChatColor ê°„ëµí™”
 	String aqua = ChatColor.AQUA + "";
 	String black = ChatColor.BLACK + "";
 	String blue = ChatColor.BLUE + "";
@@ -45,26 +45,26 @@ public class SE_Event_Passive implements Listener {
 	String strth = ChatColor.STRIKETHROUGH + "";
 	String under = ChatColor.UNDERLINE + "";
 
-	// ÀÚÁÖ »ç¿ëÇÏ´Â String °ª °£·«È­
+	// ìì£¼ ì‚¬ìš©í•˜ëŠ” String ê°’ ê°„ëµí™”
 	String debug = dgray + "[Res Debug]" + white + "";
 
 	@EventHandler
 	public static void onInventoryClick(InventoryClickEvent event) {
 		Player player = (Player) event.getWhoClicked();
 
-		if (!event.getInventory().getTitle().equalsIgnoreCase("¿£Æ¼Æ¼¸¦ ¼±ÅÃÇÏ¼¼¿ä - Ä£È­Àû ¸÷")) {
+		if (!event.getInventory().getTitle().equalsIgnoreCase("ì—”í‹°í‹°ë¥¼ ì„ íƒí•˜ì„¸ìš” - ì¹œí™”ì  ëª¹")) {
 			return;
 		}
 
 		/*
-		 * »ö±òÀÌ ÀÖ´Â ÀÌ¸§Àº ¡× À» ¾²°í ¾Æ·¡ÀÇ »ö±ò ÄÚµå ÀÔ·ÂÇÏ±â
+		 * ìƒ‰ê¹”ì´ ìˆëŠ” ì´ë¦„ì€ Â§ ì„ ì“°ê³  ì•„ë˜ì˜ ìƒ‰ê¹” ì½”ë“œ ì…ë ¥í•˜ê¸°
 		 * 
 		 * 0 1 2 3 4 5 6 7 8 9 a b c d e f k l m n o r
 		 * 
-		 * [Âü°í] https://minecraft.gamepedia.com/Formatting_codes
+		 * [ì°¸ê³ ] https://minecraft.gamepedia.com/Formatting_codes
 		 */
 		switch (event.getCurrentItem().getItemMeta().getDisplayName()) {
-		case "¡×a»óÀ§ ¸Ş´º·Î µ¹¾Æ°¡±â":
+		case "Â§aìƒìœ„ ë©”ë‰´ë¡œ ëŒì•„ê°€ê¸°":
 			SE_GUI_Main.openInv(player);
 			break;
 		default:

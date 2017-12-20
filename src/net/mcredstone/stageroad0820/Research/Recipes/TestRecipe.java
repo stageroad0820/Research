@@ -24,9 +24,9 @@ public class TestRecipe {
 		ItemStack is_rcp = new ItemStack(Material.COMMAND);
 		ItemMeta im_rcp = is_rcp.getItemMeta();
 		
-		im_rcp.setDisplayName(ChatColor.AQUA + "Å×½ºÆ® ·¹½ÃÇÇ °á°ú¹°");
+		im_rcp.setDisplayName(ChatColor.AQUA + "í…ŒìŠ¤íŠ¸ ë ˆì‹œí”¼ ê²°ê³¼ë¬¼");
 		
-		im_rcp.setLore(Arrays.asList(ChatColor.GRAY + "»ç¿ëÀÚ ÁöÁ¤ Á¶ÇÕ¹ıÀ» ´Ù¸¥ Å¬·¡½º·Î ÀÌµ¿½ÃÅ°´Âµ¥ ¼º°øÇÏ¿´½À´Ï´Ù!"));
+		im_rcp.setLore(Arrays.asList(ChatColor.GRAY + "ì‚¬ìš©ì ì§€ì • ì¡°í•©ë²•ì„ ë‹¤ë¥¸ í´ë˜ìŠ¤ë¡œ ì´ë™ì‹œí‚¤ëŠ”ë° ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤!"));
 		
 		is_rcp.setItemMeta(im_rcp);
 		
