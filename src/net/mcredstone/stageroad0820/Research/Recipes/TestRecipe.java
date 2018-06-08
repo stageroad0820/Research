@@ -30,6 +30,7 @@ public class TestRecipe {
 		
 		is_rcp.setItemMeta(im_rcp);
 		
+		@SuppressWarnings("deprecation")
 		ShapedRecipe rcp = new ShapedRecipe(new ItemStack(is_rcp)).shape("!@!", "@#@", "!$!")
 				.setIngredient('!', Material.WOOD)
 				.setIngredient('@', Material.STONE_BUTTON)
